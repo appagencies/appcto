@@ -1,4 +1,19 @@
 Appcto::Application.routes.draw do
+  root :to => "companies#index"
+
+  devise_for :users
+
+  devise_scope :user do
+    get "getlisted", :to => "devise/registrations#new"
+  end
+
+  resources :companies do
+    get :autocomplete_country_name, :on => :collection
+  end
+
+  match 'legal/:action' => 'about#privacy'
+  match 'legal/:action' => 'about#terms'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
