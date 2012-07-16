@@ -14,6 +14,11 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
 
+gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
+gem 'carmen-rails'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -22,5 +27,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'rails3-jquery-autocomplete'

@@ -1,8 +1,27 @@
 class CompaniesController < ApplicationController
-  # GET /companies
-  # GET /companies.json
+  autocomplete :country, :name
+
+  def subregion_options
+    render partial: "subregion_select"
+  end
+
   def index
-    @companies = Company.all
+    country = params[:country]
+    region = params[:region]
+
+    @budgets = Company.all_budgets
+    budget = params[:budget]
+
+    if country
+      @companies = Company.where("location.country" => country.upcase)
+      if region
+        @companies = @companies.where("location.region" => region.upcase)
+      end
+    else
+      @companies = Company.all
+    end
+
+    @companies = budget.blank? ? @companies : @companies.where("budget" => budget)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +29,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
     @company = Company.find_by_slug params[:id]
 
@@ -21,13 +38,9 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/new
-  # GET /companies/new.json
   def new
-    @company = Company.new
+    @company = Company.new(:budget => 0)
     @company.build_location
-
-    autocomplete :country, :name
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +48,10 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1/edit
   def edit
     @company = Company.find_by_slug params[:id]
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
     @company = Company.new(params[:company])
 
@@ -56,8 +66,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PUT /companies/1
-  # PUT /companies/1.json
   def update
     @company = Company.find_by_slug params[:id]
 
@@ -72,8 +80,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
     @company = Company.find_by_slug params[:id]
     @company.destroy

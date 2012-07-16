@@ -7,9 +7,11 @@ Appcto::Application.routes.draw do
     get "getlisted", :to => "devise/registrations#new"
   end
 
-  resources :companies do
-    get :autocomplete_country_name, :on => :collection
-  end
+  get '/companies/subregion_options' => 'companies#subregion_options'
+  resources :companies
+
+  match '/:country' => 'companies#index'
+  match '/:country/:region' => 'companies#index'
 
   match 'legal/:action' => 'about#privacy'
   match 'legal/:action' => 'about#terms'

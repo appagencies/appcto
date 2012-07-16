@@ -36,6 +36,10 @@ GEM
     bson_ext (1.6.4)
       bson (~> 1.6.4)
     builder (3.0.0)
+    carmen (1.0.0.beta2)
+    carmen-rails (1.0.0.beta3)
+      carmen (~> 1.0.0.beta2)
+      rails
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -144,6 +148,7 @@ PLATFORMS
 DEPENDENCIES
   bourbon
   bson_ext (~> 1.6.4)
+  carmen-rails
   carrierwave-mongoid
   coffee-rails (~> 3.2.1)
   devise

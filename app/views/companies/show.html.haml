@@ -1,0 +1,40 @@
+%p#notice= notice
+
+%p
+	%b Name:
+	= @company.name
+
+%p
+	%b Budget:
+	= @company.budget
+
+%p
+	%b Description:
+	= @company.description
+
+%p
+	%b Email:
+	= @company.email
+
+%p
+	%b Skills:
+	= @company.skills.to_sentence
+
+%p
+	%b Country:
+	- countryobject = Carmen::Country.coded(@company.location.country)
+	= countryobject.name
+	= @company.location.country
+
+%p
+	%b Region:
+	= countryobject.subregions.coded(@company.location.region).name
+	= @company.location.region
+
+%p
+	= image_tag @company.logo_url
+
+
+= link_to 'Edit', edit_company_path(@company)
+|
+= link_to 'Back', companies_path

@@ -12,11 +12,3 @@ require 'json'
 #puts 'Setting up default user login'
 #user = User.create! :email => "user@admin.com", :password => 'please'
 #puts 'New user created: ' << user.email
-
-# Countries
-Country.delete_all
-countries = JSON.parse(open("https://raw.github.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").read)
-countries.each do |country|
-	Country.create!(:name => country["name"], :code => country["alpha-2"])
-end
-puts 'Countries imported succesfully'

@@ -9,7 +9,7 @@ class Company
   field :description
   field	:email
   field	:website
-  field :skills, type: Array, default: [""] 
+  field :skills, type: Array, default: [""]
 
   embeds_one :location
 
@@ -23,5 +23,9 @@ class Company
   validates :email, format: { with: VALID_EMAIL_REGEX }, :allow_blank => true
 
   accepts_nested_attributes_for :location
+
+  def self.all_budgets
+    CompaniesHelper::BUDGET
+  end
 
 end

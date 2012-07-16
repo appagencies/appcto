@@ -1,11 +1,10 @@
 class Location
   include Mongoid::Document
 
-  field :city
-  field	:region
-  field :coordinates, type: Array
+  validates :country, :presence => true
 
-  belongs_to :country
+  field :country
+  field	:region
 
   embedded_in :company
 

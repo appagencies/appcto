@@ -2,9 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery ->
-	$(".ui-autocomplete-input").focus ->
-		$(".radio-all-countries").attr "checked", true
+$ ->
+  $('select#company_location_attributes_country').change ->
+    select_wrapper = $('#region_wrapper')
 
-	$(".ui-complete-input").change ->
-		$(".radio-all-countries").attr "id", true
+    $('select', select_wrapper).attr('disabled', true)
+
+    country_code = $(this).val()
+
+    url = "/companies/subregion_options?parent_region=#{country_code}"
+    select_wrapper.load(url)
