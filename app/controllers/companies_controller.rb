@@ -1,6 +1,4 @@
 class CompaniesController < ApplicationController
-  autocomplete :country, :name
-
   def subregion_options
     render partial: "subregion_select"
   end
@@ -52,19 +50,20 @@ class CompaniesController < ApplicationController
     @company = Company.find_by_slug params[:id]
   end
 
-  def create
-    @company = Company.new(params[:company])
+  #def create
+  #  @company = Company.new(params[:company])
 
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render json: @company, status: :created, location: @company }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#    respond_to do |format|
+ #     if @company.save
+  #      format.html { redirect_to @company, notice: 'Company was successfully created.' }
+  #
+   #    format.json { render json: @company, status: :created, location: @company }
+    #  else
+     #   format.html { render action: "new" }
+      #  format.json { render json: @company.errors, status: :unprocessable_entity }
+     # end
+    #end
+  #end
 
   def update
     @company = Company.find_by_slug params[:id]

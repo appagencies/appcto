@@ -1,5 +1,10 @@
 class User
   include Mongoid::Document
+
+  attr_accessible :email, :password, :remember_me, :company_attributes
+  has_one :company, autosave: true
+  accepts_nested_attributes_for :company
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -12,7 +17,7 @@ class User
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
-  
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -40,4 +45,5 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
 end

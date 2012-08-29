@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',		'3.2.6'
 
-gem 'mongoid',		'~> 2.4.11'
+gem "mongoid"
 gem 'bson_ext',		'~> 1.6.4'
 
 gem 'bourbon'
@@ -15,8 +15,8 @@ gem 'haml-rails'
 gem 'devise'
 
 gem 'jquery-rails'
-gem 'rails3-jquery-autocomplete'
 gem 'carmen-rails'
+gem 'wicked'
 
 
 # Gems used only for assets and not required

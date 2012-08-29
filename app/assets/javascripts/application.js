@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= modernizr-2.5.3.min
 //= require autocomplete-rails
 //= require_tree .

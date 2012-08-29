@@ -1,20 +1,29 @@
 Appcto::Application.routes.draw do
   root :to => "companies#index"
 
-  devise_for :users
-
   devise_scope :user do
-    get "getlisted", :to => "devise/registrations#new"
+    get "getlisted", :to => "registrations#new"
   end
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
+  resources :after_register
+
+  resources :users
 
   get '/companies/subregion_options' => 'companies#subregion_options'
   resources :companies
+
+  ####
+
+  match 'about' => 'about#index'
 
   match '/:country' => 'companies#index'
   match '/:country/:region' => 'companies#index'
 
   match 'legal/:action' => 'about#privacy'
   match 'legal/:action' => 'about#terms'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
