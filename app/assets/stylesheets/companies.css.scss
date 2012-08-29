@@ -7,9 +7,9 @@ body {
 /* Base Style */
 
 .inner {
-	width: 940px;
-	margin: 0 auto;
-	padding: 0 10px;
+  width: 940px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 .hide {
@@ -17,119 +17,119 @@ body {
 }
 
 header {
-	height: 67px;
-	background: #2b2b2b image-url("header-bg.png") repeat-x;
-	@include clearfix;
+  height: 67px;
+  background: #2b2b2b image-url("header-bg.png") repeat-x;
+  @include clearfix;
 
-	.logo {
-		float: left;
-		margin: 0;
-		padding: 10px 0;
-		height: 47px;
-		width: 220px;
-		background: image-url("logo.png") no-repeat center left;
-		overflow: hidden;
-		&:hover {
-			opacity: 0.9;
-		}
-		a {
-			width: 220px;
-			height: 47px;
-			display: block;
-			@include hide-text;
-		}
-	}
+  .logo {
+    float: left;
+    margin: 0;
+    padding: 10px 0;
+    height: 47px;
+    width: 220px;
+    background: image-url("logo.png") no-repeat center left;
+    overflow: hidden;
+    &:hover {
+      opacity: 0.9;
+    }
+    a {
+      width: 220px;
+      height: 47px;
+      display: block;
+      @include hide-text;
+    }
+  }
 
-	nav {
-		float: right;
-		padding: 10px 0;
-		ul li {
-			display: inline-block;
-			height: 24px;
-			line-height: 24px 0;
-			padding: 13px 0;
-			margin: 0 0 0 20px;
-			vertical-align: middle;
-		}
-		a, a:visited {
-			text-decoration: none;
-			color: white;
-			font-size: 14px;
-			&:hover {
-				color: shade(white, 10%);
-			}
-			&.getlisted {
-				background: $blue;
-				padding: 5px 10px;
-				@include border-radius(2px);
-				&:hover {
-					color: white;
-					background: $darkblue;
-				}
-			}
-		}
+  nav {
+    float: right;
+    padding: 10px 0;
+    ul li {
+      display: inline-block;
+      height: 24px;
+      line-height: 24px 0;
+      padding: 13px 0;
+      margin: 0 0 0 20px;
+      vertical-align: middle;
+    }
+    a, a:visited {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      &:hover {
+        color: shade(white, 10%);
+      }
+      &.getlisted {
+        background: $blue;
+        padding: 5px 10px;
+        @include border-radius(2px);
+        &:hover {
+          color: white;
+          background: $darkblue;
+        }
+      }
+    }
 
-	}
+  }
 }
 
 footer {
-	border-top: 1px solid #dadada;
-	@include clearfix;
+  border-top: 1px solid #dadada;
+  @include clearfix;
 
-	ul {
-		display: inline;
-		li {
-			display: inline-block;
-			margin: 10px 10px 0 0;
-			a, a:visited {
-				color: $black;
-				text-decoration: none;
-				&:hover {
-					color: $blue;
-				}
-			}
-		}
-	}
+  ul {
+    display: inline;
+    li {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      a, a:visited {
+        color: $black;
+        text-decoration: none;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
 
-	#copyright {
-		margin: 10px 10px 0 0;
-	}
+  #copyright {
+    margin: 10px 10px 0 0;
+  }
 
-	#legal {
-		display: inline-block;
-	}
+  #legal {
+    display: inline-block;
+  }
 
-	#social {
-		float: right;
-		.icon  top left{
-			background: image-url("social-icons.png") no-repeat;
-			display: inline-block;
-			height: 14px;
-			width: 14px;
-		}
-		.twitter .icon {
-			background-position: 0 0;
-			width: 18px;
-		}
-		.fb .icon { background-position: -18px 0; }
-	}
+  #social {
+    float: right;
+    .icon  top left{
+      background: image-url("social-icons.png") no-repeat;
+      display: inline-block;
+      height: 14px;
+      width: 14px;
+    }
+    .twitter .icon {
+      background-position: 0 0;
+      width: 18px;
+    }
+    .fb .icon { background-position: -18px 0; }
+  }
 }
 
 /* Filter */
 #filter {
-	background: #f5f5f5;
-	border-bottom: 1px solid #e1e1e1;
-	border-top: 1px solid #fff;
-	@include clearfix;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #fff;
+  @include clearfix;
 
 }
 
 .filter {
-	float: left;
-	label {
-		font-size: 14px;
-		font-weight: bold;
-	}
+  float: left;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
 }
 
 /* Content */

@@ -2,7 +2,8 @@ Appcto::Application.routes.draw do
   root :to => "companies#index"
 
   devise_scope :user do
-    get "getlisted", :to => "registrations#new"
+    get "getlisted" => "registrations#new"
+    get "login" => "devise/sessions#new"
   end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -18,12 +19,11 @@ Appcto::Application.routes.draw do
 
   match 'about' => 'about#index'
 
+  match 'legal/privacy' => 'about#privacy'
+  match 'legal/terms' => 'about#terms'
+
   match '/:country' => 'companies#index'
   match '/:country/:region' => 'companies#index'
-
-  match 'legal/:action' => 'about#privacy'
-  match 'legal/:action' => 'about#terms'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

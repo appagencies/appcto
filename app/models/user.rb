@@ -46,4 +46,8 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
 
+  def email_domain
+    "http://" + self.split("@").last
+  end
+
 end

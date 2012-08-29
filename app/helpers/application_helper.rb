@@ -1,5 +1,5 @@
 module ApplicationHelper
 
-	PLATFORMS = ["ios","android","blackberry","windows"]
+  PLATFORMS = ["ios","android","blackberry","windows"]
 
 end
