@@ -11,7 +11,7 @@
   = f.text_field :name
 
 .field
-  - CompaniesHelper::BUDGET.each do |budget_name, budget_id|
+  - CompaniesHelper::BUDGETS.each do |budget_name, budget_id|
     = f.radio_button :budget, budget_id
     = f.label :budget, budget_name, :value => budget_id
 
@@ -28,7 +28,7 @@
   = f.text_field :website
 
 .field
-  - ApplicationHelper::PLATFORMS.each do |value|
+  - CompaniesHelper::PLATFORMS.each do |value|
     = check_box_tag "company_skills_#{value}", value, @company.skills.include?(value), :name => "company[skills][]"
     = label_tag "company_skills_#{value}", value
 
@@ -39,6 +39,7 @@
     = render partial: "companies/subregion_select", locals: {:l => l, parent_region: l.object.country}
 
 .field
+  = f.label :logo
   = image_tag @company.logo_url if @company.logo?
   = f.file_field :logo
   = f.hidden_field :logo_cache

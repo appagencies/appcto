@@ -12,3 +12,5 @@ $ ->
 
     url = "/companies/subregion_options?parent_region=#{country_code}"
     select_wrapper.load(url)
+
+  $(".select-btn").select2 minimumResultsForSearch: 10, width: 'off'

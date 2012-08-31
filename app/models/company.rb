@@ -26,8 +26,13 @@ class Company
 
   accepts_nested_attributes_for :location
 
-  def self.all_budgets
-    CompaniesHelper::BUDGET
+  class << self
+    def by_country(country)
+      where('location.country' => country.upcase)
+    end
+    def by_region(region)
+      where('location.region' => region.upcase)
+    end
   end
 
 end

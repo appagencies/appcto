@@ -1,0 +1,208 @@
+body {
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 13px;
+  background: #fcfcfc;
+}
+
+/* Base Style */
+
+.inner {
+  width: 940px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.hide {
+  display: none;
+}
+
+header {
+  height: 67px;
+  background: #2b2b2b image-url("header-bg.png") repeat-x;
+  @include clearfix;
+
+  .logo {
+    float: left;
+    margin: 0;
+    padding: 10px 0;
+    height: 47px;
+    width: 220px;
+    background: image-url("logo.png") no-repeat center left;
+    overflow: hidden;
+    &:hover {
+      opacity: 0.9;
+    }
+    a {
+      width: 220px;
+      height: 47px;
+      display: block;
+      @include hide-text;
+    }
+  }
+
+  nav {
+    float: right;
+    padding: 10px 0;
+    ul li {
+      display: inline-block;
+      height: 24px;
+      line-height: 24px 0;
+      padding: 13px 0;
+      margin: 0 0 0 20px;
+      vertical-align: middle;
+    }
+    a, a:visited {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      &:hover {
+        color: shade(white, 10%);
+      }
+      &.getlisted {
+        background: $blue;
+        padding: 5px 10px;
+        @include border-radius(2px);
+        &:hover {
+          color: white;
+          background: $darkblue;
+        }
+      }
+    }
+
+  }
+}
+
+footer {
+  border-top: 1px solid #dadada;
+  @include clearfix;
+
+  ul {
+    display: inline;
+    li {
+      display: inline-block;
+      a, a:visited {
+        color: $black;
+        text-decoration: none;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+
+  #subnav {
+    margin: 10px 0;
+    ul li {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  #copyright {
+    color: #A1A1A1;
+  }
+
+  #legal {
+    display: inline-block;
+    ul li {
+      margin: 0 0 0 10px;
+      a {
+        color: #A1A1A1;
+      }
+    }
+  }
+
+  #social {
+    float: right;
+    margin: 0 0 20px 0;
+    ul li {
+      margin: 0 0 0 10px;
+    }
+    .icon {
+      background: image-url("social-icons.png") no-repeat top left;
+      display: inline-block;
+      height: 14px;
+      width: 14px;
+      vertical-align: -2px;
+    }
+    .twitter .icon {
+      background-position: 0 0;
+      width: 18px;
+    }
+    .fb .icon { background-position: -18px 0; }
+  }
+}
+
+/* Filter */
+#filter {
+  background: #f5f5f5;
+  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #fff;
+}
+
+.filter {
+  display: inline-block;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 0 5px 0;
+  }
+}
+
+.budget-options select {
+  width: auto;
+}
+
+.actions {
+  clear: both;
+  margin: 20px 0;
+}
+
+/* Custom Select2 Skin */
+.select2-container .select2-choice {
+  color: #373737;
+  font: bold 16px Helvetica, Arial, sans-serif;
+  height: auto;
+  border-color: #ddd;
+  border-bottom: 1px solid #c5c5c5;
+  padding: 15px 20px;
+  @include linear-gradient(#fcfcfc, #ededed)
+}
+
+.select2-container .select2-choice div {
+  background: none;
+  border: 0;
+  width: 10px;
+  margin: 0 20px;
+}
+
+.select2-container .select2-choice div b {
+  background: image-url("select2/select-arrow.png") no-repeat left center;
+}
+
+.select2-dropdown-open .select2-choice {
+  @include box-shadow(none);
+}
+
+.select2-dropdown-open .select2-choice div b {
+  background-position: right center;
+}
+
+.select2-drop {
+  @include box-shadow(none);
+  border-color: #ddd;
+}
+
+.select2-results {
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.select2-results .select2-result-label {
+  padding: 4px 20px;
+}
+
+/* Content */
+#content {
+}

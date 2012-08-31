@@ -1,8 +1,18 @@
 #filter
-	.inner
-		.filter#platforms
-			%label Platform
-		.filter#location
-			%label Location
-		.filter#budget
-			%label Budget
+  .inner
+    = form_tag(:action => :index) do
+      .filter#platforms
+        %label Platform
+        .platform-options
+          - CompaniesHelper::PLATFORMS.each do |value|
+            = check_box_tag "filter_skills_#{value}", value
+            = label_tag "filter_skills_#{value}", value
+      .filter#location
+        %label Location
+      .filter#budget
+        %label Budget
+        .budget-options
+          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS), :class => "select-btn"
+
+      .actions
+        = submit_tag "Filter"

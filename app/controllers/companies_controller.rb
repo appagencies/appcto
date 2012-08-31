@@ -7,13 +7,13 @@ class CompaniesController < ApplicationController
     country = params[:country]
     region = params[:region]
 
-    @budgets = Company.all_budgets
     budget = params[:budget]
 
+
     if country
-      @companies = Company.where("location.country" => country.upcase)
+      @companies = Company.by_country(country)
       if region
-        @companies = @companies.where("location.region" => region.upcase)
+        @companies = @companies.by_region(region)
       end
     else
       @companies = Company.all

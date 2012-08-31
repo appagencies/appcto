@@ -1,21 +1,17 @@
-%h2 Listing companies
+= render "shared/filter"
 
-= params[:budget]
-
-= form_tag(:action => :index) do
-  = select_tag "budget", options_for_select(@budgets)
-  = submit_tag "Filter"
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @companies.each do |company|
+#content.inner
+  = params[:budget]
+  %table
     %tr
-      %td= company.name
-      %td= link_to 'Show', company
-      %td= link_to 'Edit', edit_company_path(company)
-      %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
+      %th Name
+      %th
+      %th
+      %th
+
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= link_to 'Show', company
+        %td= link_to 'Edit', edit_company_path(company)
+        %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }

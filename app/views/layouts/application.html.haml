@@ -17,34 +17,7 @@
           %nav
             = render "shared/navigation"
 
-      #main.inner{:role => "main"}
-        -if user_signed_in?
-          -unless current_user.company
-            "Nog geen company!"
+      #main{:role => "main"}
         = yield
       %footer.inner
-        %nav#subnav
-          %ul
-            %li= link_to "About", "#"
-            %li= link_to "Blog", "#"
-            %li= link_to "Contact", "#"
-            %li= link_to "Advertise", "#"
-            %li= link_to "Testimonials", "#"
-            %li= link_to "Newsletter", "#"
-
-        %span#copyright © 2012 AppAgencies.com
-
-        %nav#legal
-          %ul
-            %li= link_to "Terms", legal_terms_path
-            %li= link_to "Privacy", legal_privacy_path
-
-        %nav#social
-          %span Join us on
-          %ul
-            %li.twitter
-              .icon
-              = link_to "Twitter", "http://twitter.com/appagencies", :target => "_blank"
-            %li.fb
-              .icon
-              = link_to "Facebook", "http://www.facebook.com/AppAgencies", :target => "_blank"
+        = render "shared/footer"
