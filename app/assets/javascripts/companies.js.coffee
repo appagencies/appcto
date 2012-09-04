@@ -23,3 +23,5 @@ $ ->
   	ajax:
   		url: '/companies/location.json'
   		dataType: 'json'
+
+  $('.platform-options li').tooltip placement: 'bottom'
