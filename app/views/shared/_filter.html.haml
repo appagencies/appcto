@@ -4,11 +4,25 @@
       .filter#platforms
         %label Platform
         .platform-options
-          - CompaniesHelper::PLATFORMS.each do |value|
-            = check_box_tag "filter_skills_#{value}", value
-            = label_tag "filter_skills_#{value}", value
+          %ul
+            %li.ios{'data-filter' => 'ios'}
+              .icon
+            %li.android{'data-filter' => 'android'}
+              .icon
+            %li.blackberry{'data-filter' => 'blackberry'}
+              .icon
+            %li.windows.active{'data-filter' => 'windows'}
+              .icon
+
+          .hide
+            - CompaniesHelper::PLATFORMS.each do |value|
+              = check_box_tag "filter_skills_#{value}", value
+              = label_tag "filter_skills_#{value}", value
       .filter#location
         %label Location
+        .location-options
+          = select_tag "location_select"
+
       .filter#budget
         %label Budget
         .budget-options
@@ -16,3 +30,5 @@
 
       .actions
         = submit_tag "Filter"
+#result_summary
+  %p.inner Showing all 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from <b>$5,000$ - $15,000</b>:

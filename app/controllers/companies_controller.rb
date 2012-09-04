@@ -50,6 +50,10 @@ class CompaniesController < ApplicationController
     @company = Company.find_by_slug params[:id]
   end
 
+  def location
+    respond_to :json
+  end
+
   #def create
   #  @company = Company.new(params[:company])
 
