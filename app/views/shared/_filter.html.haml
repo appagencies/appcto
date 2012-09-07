@@ -7,7 +7,7 @@
           %ul
             %li.ios{'data-filter' => 'ios', 'data-title' => 'iOS'}
               .icon
-            %li.android{'data-filter' => 'android', 'data-title' => 'Android'}
+            %li.android.active{'data-filter' => 'android', 'data-title' => 'Android'}
               .icon
             %li.blackberry{'data-filter' => 'blackberry', 'data-title' => 'BlackBerry'}
               .icon
@@ -26,9 +26,9 @@
       .filter#budget
         %label Budget
         .budget-options
-          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS), :class => "select-btn"
+          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}), :class => "select-btn"
 
-      .actions
+      .actions.hide
         = submit_tag "Filter"
 #result_summary
-  %p.inner Showing all 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from <b>$5,000$ - $15,000</b>:
+  %p.inner Showing 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from <b>$5,000$ - $15,000</b>:

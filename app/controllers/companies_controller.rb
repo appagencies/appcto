@@ -48,9 +48,10 @@ class CompaniesController < ApplicationController
 
   def edit
     @company = Company.find_by_slug params[:id]
+    authorize! :edit, @company
   end
 
-  def location
+  def loc
     respond_to :json
   end
 

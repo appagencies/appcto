@@ -2,12 +2,14 @@ body {
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   font-size: 13px;
   background: #fcfcfc;
+  min-width: 1000px;
+
 }
 
 /* Base Style */
 
 .inner {
-  width: 940px;
+  width: 960px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -19,7 +21,8 @@ body {
 header {
   height: 67px;
   background: #2b2b2b image-url("header-bg.png") repeat-x;
-  @include clearfix;
+
+  .inner { @include clearfix; }
 
   .logo {
     float: left;
@@ -76,6 +79,7 @@ header {
 #filter {
   background: #f5f5f5;
   border-top: 1px solid #fff;
+  border-bottom: 1px solid #e5e5e5;
   @include clearfix;
 }
 
@@ -119,6 +123,7 @@ header {
         background: #fff;
         border-color: #a6a6a6;
         @include box-shadow(inset 0 2px 6px rgba(0,0,0,.1));
+        z-index: 1;
       }
       .icon {
         position: absolute;
@@ -219,6 +224,61 @@ header {
 
 /* Content */
 #content {
+  margin: 10px auto;
+}
+
+/* Companies */
+#companies {
+  @include clearfix;
+
+  .company {
+    float: left;
+    border: 1px solid #c3c3c3;
+    @include border-radius(4px);
+    @include box-shadow(inset 0 1px 0 #fff);
+    background: #fff image-url("listing-bg.png") repeat-x top left;
+    margin: 10px;
+  }
+
+  .company.pro {
+    width: 458px;
+    height: 458px;
+  }
+
+  .company.free {
+    height: 218px;
+    width: 218px;
+    .company-name {
+      line-height: 16px;
+      a { font-size: 16px; }
+    }
+    .company-location, .company-budget { font-size: 11px; }
+  }
+
+  .company-content-wrapper {
+    padding: 20px;
+  }
+
+  .company-name {
+    margin: 0 0 5px 0;
+    line-height: 26px;
+    a {
+      color: $blue;
+      text-decoration: none;
+      font-size: 26px;
+      &:hover { color: shade($blue, 10%); }
+      &:visited { color: #551A8B; }
+    }
+  }
+  .company-location {
+    margin: 0 0 2px 0;
+  }
+  .company-budget {
+    color: #888;
+    margin: 0 0 2px 0;
+    text-transform: uppercase;
+    font-style: italic;
+  }
 }
 
 footer {
@@ -256,6 +316,7 @@ footer {
       margin: 0 0 0 10px;
       a {
         color: #A1A1A1;
+        &:hover { color: shade(#a1a1a1, 30%); }
       }
     }
   }

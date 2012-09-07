@@ -36,6 +36,7 @@ GEM
     bson_ext (1.6.4)
       bson (~> 1.6.4)
     builder (3.0.0)
+    cancan (1.6.8)
     carmen (1.0.0.beta2)
     carmen-rails (1.0.0.beta3)
       carmen (~> 1.0.0.beta2)
@@ -151,6 +152,7 @@ PLATFORMS
 DEPENDENCIES
   bourbon
   bson_ext (~> 1.6.4)
+  cancan
   carmen-rails
   carrierwave-mongoid
   coffee-rails (~> 3.2.1)

@@ -13,6 +13,7 @@ gem 'hirb'
 gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
+gem 'cancan'
 
 gem 'jquery-rails'
 gem 'carmen-rails'

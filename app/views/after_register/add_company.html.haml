@@ -1,4 +1,5 @@
-%h2 Add your company
+.inner
+  %h2 Add your company
 
-= form_for @company, :url => wizard_path, :method => :put do |f|
-  = render "companies/form", :f => f
+  = form_for @company, :url => wizard_path, :method => :put do |f|
+    = render "companies/form", :f => f

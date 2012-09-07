@@ -11,9 +11,9 @@
   = f.text_field :name
 
 .field
-  - CompaniesHelper::BUDGETS.each do |budget_name, budget_id|
-    = f.radio_button :budget, budget_id
-    = f.label :budget, budget_name, :value => budget_id
+  - CompaniesHelper::BUDGETS.each do |budget|
+    = f.radio_button :budget, budget[:id]
+    = f.label :budget, budget[:string], :value => budget[:id]
 
 .field
   = f.label :description
@@ -25,7 +25,7 @@
 
 .field
   = f.label :website
-  = f.text_field :website
+  = f.url_field :website
 
 .field
   - CompaniesHelper::PLATFORMS.each do |value|
