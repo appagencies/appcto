@@ -1,22 +1,23 @@
-%h2 Login
+.inner
+  %h2 Login
 
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br
-    = f.email_field :email
-
-  %div
-    = f.label :password
-    %br
-    = f.password_field :password
-
-  - if devise_mapping.rememberable?
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     %div
-      = f.check_box :remember_me
-      = f.label :remember_me
+      = f.label :email
+      %br
+      = f.email_field :email
 
-  %div
-    = f.submit "Login"
+    %div
+      = f.label :password
+      %br
+      = f.password_field :password
 
-= render "devise/shared/links"
+    - if devise_mapping.rememberable?
+      %div
+        = f.check_box :remember_me
+        = f.label :remember_me
+
+    %div
+      = f.submit "Login"
+
+  = render "devise/shared/links"

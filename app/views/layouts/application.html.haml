@@ -11,10 +11,7 @@
     = csrf_meta_tags
   %body
     #wrapper
-      - if flash[:notice]
-        %p#notice= flash[:notice]
-      - elsif flash[:alert]
-        %p#alert= flash[:alert]
+      = render "shared/flashmsg"
 
       %header
         .inner

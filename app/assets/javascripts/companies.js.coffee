@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+
+  # AutoHide Flash Message
+  flashCallback = ->
+    $(".flash-message").slideUp()
+  $(".flash-message").bind 'click', (ev) =>
+    $(".flash-message").slideUp()
+  setTimeout flashCallback, 3000
+
   $('select#company_location_attributes_country').change ->
     select_wrapper = $('#region_wrapper')
 
