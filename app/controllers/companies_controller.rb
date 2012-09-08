@@ -72,6 +72,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find_by_slug params[:id]
+    params[:company][:skills] ||= []
 
     respond_to do |format|
       if @company.update_attributes(params[:company])

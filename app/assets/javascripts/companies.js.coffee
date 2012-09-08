@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-
   # AutoHide Flash Message
   flashCallback = ->
     $(".flash-message").slideUp()

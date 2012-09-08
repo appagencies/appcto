@@ -2,7 +2,7 @@ class AfterRegisterController < ApplicationController
   include Wicked::Wizard
   before_filter :authenticate_user!
 
-  steps :add_company
+  steps :add_company, :successful
 
   def show
     case step
