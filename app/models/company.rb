@@ -9,8 +9,9 @@ class Company
   field :description
   field	:email
   field	:website
-  field :skills, type: Array, default: [""]
+  field :skills, type: Array, default: []
   field :user_id
+  field :approved, type: Boolean, default: 0
 
   embeds_one :location
   belongs_to :user
@@ -33,6 +34,13 @@ class Company
     def by_region(region)
       where('location.region' => region.upcase)
     end
+    def is_approved
+      where(:approved => true)
+    end
+  end
+
+  def is_approved?
+    self.approved == true
   end
 
 end

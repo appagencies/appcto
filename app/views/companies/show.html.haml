@@ -1,37 +1,38 @@
-%p
-  %b Name:
-  = @company.name
+.inner
+  %p
+    %b Name:
+    = @company.name
 
-%p
-  %b Budget:
-  = @company.budget
+  %p
+    %b Budget:
+    = @company.budget
 
-%p
-  %b Description:
-  = @company.description
+  %p
+    %b Description:
+    = @company.description
 
-%p
-  %b Email:
-  = @company.email
+  %p
+    %b Email:
+    = @company.email
 
-%p
-  %b Skills:
-  = @company.skills.to_sentence
+  %p
+    %b Skills:
+    = @company.skills.to_sentence
 
-%p
-  %b Country:
-  - countryobject = Carmen::Country.coded(@company.location.country)
-  = countryobject.name
-  = @company.location.country
+  %p
+    %b Country:
+    - countryobject = Carmen::Country.coded(@company.location.country)
+    = countryobject.name
+    = @company.location.country
 
-%p
-  %b Region:
-  = countryobject.subregions.coded(@company.location.region).name
-  = @company.location.region
+  %p
+    %b Region:
+    = countryobject.subregions.coded(@company.location.region).name
+    = @company.location.region
 
-%p
-  = image_tag @company.logo_url
+  %p
+    = image_tag @company.logo_url
 
 
-- if can? :update, @company
-  = link_to 'Edit', edit_company_path(@company)
+  - if can? :update, @company
+    = link_to 'Edit', edit_company_path(@company)

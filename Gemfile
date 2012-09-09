@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails',		'3.2.6'
+gem 'rails',    '3.2.6'
 
 gem "mongoid"
-gem 'bson_ext',		'~> 1.6.4'
+gem 'bson_ext',   '~> 1.6.4'
 
 gem 'bourbon'
 gem 'mongoid_slug'
 gem 'carrierwave-mongoid'
-gem 'hirb'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'hirb'
+end
+
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
@@ -18,6 +20,8 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'carmen-rails'
 gem 'wicked'
+
+gem 'rails_admin'
 
 gem 'select2-rails'
 

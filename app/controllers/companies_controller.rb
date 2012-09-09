@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
         @companies = @companies.by_region(region)
       end
     else
-      @companies = Company.all
+      @companies = Company.is_approved.all
     end
 
     @companies = budget.blank? ? @companies : @companies.where("budget" => budget)
@@ -29,6 +29,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find_by_slug params[:id]
+    authorize! :read, @company
 
     respond_to do |format|
       format.html # show.html.erb
@@ -54,21 +55,6 @@ class CompaniesController < ApplicationController
   def loc
     respond_to :json
   end
-
-  #def create
-  #  @company = Company.new(params[:company])
-
-#    respond_to do |format|
- #     if @company.save
-  #      format.html { redirect_to @company, notice: 'Company was successfully created.' }
-  #
-   #    format.json { render json: @company, status: :created, location: @company }
-    #  else
-     #   format.html { render action: "new" }
-      #  format.json { render json: @company.errors, status: :unprocessable_entity }
-     # end
-    #end
-  #end
 
   def update
     @company = Company.find_by_slug params[:id]

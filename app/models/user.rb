@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
 
-  attr_accessible :email, :password, :remember_me, :company_attributes
+  attr_accessible :email, :password, :remember_me, :company_attributes, :role
   has_one :company, autosave: true
   accepts_nested_attributes_for :company
 
@@ -45,6 +45,10 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  field :role, :type => String, :default => "company"
+
+  ROLES = %w[admin company]
 
   def email_domain
     "http://" + self.split("@").last

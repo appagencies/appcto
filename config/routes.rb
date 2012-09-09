@@ -1,4 +1,6 @@
 Appcto::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   root :to => "companies#index"
 
   devise_scope :user do
