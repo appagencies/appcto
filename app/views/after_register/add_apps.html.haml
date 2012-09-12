@@ -1,0 +1,5 @@
+.inner
+  %h2 Add your apps
+
+  = form_for @app, :url => wizard_path, :method => :put do |f|
+    = render "apps/form", :f => f

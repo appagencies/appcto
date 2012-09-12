@@ -14,6 +14,7 @@ class Ability
       can :manage, :all
     elsif user.role == "company"
       can :create, Company
+      can :read, Company
       can :update, Company, :user => user
     end
 

@@ -1,0 +1,14 @@
+#region_wrapper
+	-	if params[:parent_region]
+		- parent_region ||= params[:parent_region]
+		- country = Carmen::Country.coded(parent_region)
+		- if !country.nil? && country.subregions?
+			= label_tag :region
+			= subregion_select "company[location_attributes]", :region, parent_region
+	- else
+		- country = Carmen::Country.coded(parent_region)
+		- if !country.nil? && country.subregions?
+			= l.label :region
+			= l.subregion_select :region, parent_region
+
+

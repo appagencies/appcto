@@ -16,7 +16,9 @@ Appcto::Application.routes.draw do
 
   get '/companies/subregion_options' => 'companies#subregion_options'
   get '/companies/location' => 'companies#location'
-  resources :companies
+  resources :companies do
+    resources :apps
+  end
 
   ####
 

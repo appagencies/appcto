@@ -9,11 +9,13 @@ class Company
   field :description
   field	:email
   field	:website
-  field :skills, type: Array, default: []
   field :user_id
   field :approved, type: Boolean, default: 0
 
   embeds_one :location
+  embeds_many :apps
+
+  embeds_many :platforms, as: :platformable
   belongs_to :user
 
 	mount_uploader :logo, LogoUploader
@@ -25,7 +27,7 @@ class Company
   validates :name, :length => { :maximum => 100 }, :uniqueness => { :case_sensitive => false }
   validates :email, format: { with: VALID_EMAIL_REGEX }, :allow_blank => true
 
-  accepts_nested_attributes_for :location
+  accepts_nested_attributes_for :location, :apps, :platforms
 
   class << self
     def by_country(country)

@@ -28,9 +28,10 @@
   = f.url_field :website
 
 .field
-  - CompaniesHelper::PLATFORMS.each do |value|
-    = check_box_tag "company_skills_#{value}", value, @company.skills.include?(value), :name => "company[skills][]"
-    = label_tag "company_skills_#{value}", value
+  -# = f.fields_for :platform do |p|
+  -#  - CompaniesHelper::PLATFORMS.each do |value|
+  -#    = check_box_tag "company_platform_#{value}", value, @company.platform.include?(value), :name => "company[platform][]"
+  -#    = label_tag "company_platform_#{value}", value
 
 .field
   = f.fields_for :location do |l|

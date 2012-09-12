@@ -1,4 +1,8 @@
 .inner
+  - if !@company.is_approved?
+    .pending-review
+      Your company isn't publicly visible yet while pending review.
+
   %p
     %b Name:
     = @company.name
@@ -16,8 +20,8 @@
     = @company.email
 
   %p
-    %b Skills:
-    = @company.skills.to_sentence
+    %b Platforms:
+    = @company.platforms.name
 
   %p
     %b Country:

@@ -1,0 +1,18 @@
+- if @app.errors.any?
+  #error_explanation
+    %h2= pluralize(@app.errors.count, "error") + " prohibited this company from being saved:"
+
+    %ul
+      - @app.errors.full_messages.each do |msg|
+        %li= msg
+
+.field
+  = f.label :name
+  = f.text_field :name
+
+.field
+  = f.label :link
+  = f.url_field :link
+
+.actions
+  = f.submit
