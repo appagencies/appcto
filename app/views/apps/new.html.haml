@@ -1,0 +1,5 @@
+.inner
+  = form_for [@app.company, @app] do |f|
+    = render 'form', :f => f
+
+  = link_to "Back", company_apps_path(@app.company)

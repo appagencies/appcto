@@ -3,4 +3,6 @@
     %b Name:
     = @app.name
 
-  = link_to 'Edit', "#"
+  = link_to "Back", company_apps_path(@app.company)
+  = link_to 'Edit', edit_company_app_path(@app.company, @app)
+  = link_to "Delete App", [@app.company, @app], :confirm => 'Are you sure?', :method => :delete

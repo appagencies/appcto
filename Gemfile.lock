@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/digitalplaywright/mongoid-slug.git
+  revision: 6c93390c392881e25c0c16c6a0b939127fe76d2e
+  specs:
+    mongoid_slug (0.20.0.rc1)
+      mongoid (~> 3.0)
+      stringex (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,18 +45,12 @@ GEM
     bson (1.6.4)
     bson_ext (1.6.4)
       bson (~> 1.6.4)
-    builder (3.0.0)
+    builder (3.0.3)
     cancan (1.6.8)
     carmen (1.0.0.beta2)
     carmen-rails (1.0.0.beta3)
       carmen (~> 1.0.0.beta2)
       rails
-    carrierwave (0.6.2)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-    carrierwave-mongoid (0.2.1)
-      carrierwave (~> 0.6.1)
-      mongoid (~> 2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -73,7 +75,7 @@ GEM
     hike (1.2.1)
     hirb (0.7.0)
     hpricot (0.8.6)
-    i18n (0.6.0)
+    i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.1)
       railties (>= 3.1.0, < 5.0)
@@ -90,16 +92,14 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
-    mongo (1.6.2)
-      bson (~> 1.6.2)
-    mongoid (2.4.12)
+    mongoid (3.0.5)
       activemodel (~> 3.1)
-      mongo (<= 1.6.2)
+      moped (~> 1.1)
+      origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid_slug (0.10.0)
-      mongoid (~> 2.0)
-      stringex (~> 1.3)
+    moped (1.2.1)
     multi_json (1.3.6)
+    origin (1.0.8)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -179,14 +179,13 @@ DEPENDENCIES
   bson_ext (~> 1.6.4)
   cancan
   carmen-rails
-  carrierwave-mongoid
   coffee-rails (~> 3.2.1)
   devise
   haml-rails
   hirb
   jquery-rails
-  mongoid
-  mongoid_slug
+  mongoid (~> 3.0.5)
+  mongoid_slug!
   rails (= 3.2.6)
   rails_admin
   sass-rails (~> 3.2.3)

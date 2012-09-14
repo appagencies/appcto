@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find_by_slug params[:id]
+    @company = Company.find params[:id]
     authorize! :read, @company
 
     respond_to do |format|
@@ -48,7 +48,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find_by_slug params[:id]
+    @company = Company.find params[:id]
     authorize! :edit, @company
   end
 
@@ -57,7 +57,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find_by_slug params[:id]
+    @company = Company.find params[:id]
     params[:company][:skills] ||= []
 
     respond_to do |format|
@@ -72,7 +72,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find_by_slug params[:id]
+    @company = Company.find params[:id]
     @company.destroy
 
     respond_to do |format|

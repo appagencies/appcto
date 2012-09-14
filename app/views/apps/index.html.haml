@@ -2,4 +2,8 @@
   #apps
     - @apps.each do |app|
       .app
-        = app.name
+        = link_to app.name, [app.company, app]
+        = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
+        = link_to "Edit App", edit_company_app_path(app.company, app)
+
+  = link_to "Add Aps", new_company_app_path

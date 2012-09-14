@@ -35,7 +35,7 @@
     = @company.location.region
 
   %p
-    = image_tag @company.logo_url
+    -#= image_tag @company.logo_url
 
 
   - if can? :update, @company

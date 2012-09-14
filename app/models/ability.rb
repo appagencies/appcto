@@ -13,9 +13,8 @@ class Ability
       can :dashboard
       can :manage, :all
     elsif user.role == "company"
-      can :create, Company
-      can :read, Company
-      can :update, Company, :user => user
+      can :manage, Company, :user => user
+      can :manage, App, :company => {:user => user}
     end
 
   end

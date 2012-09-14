@@ -1,4 +1,4 @@
-require 'carrierwave/mongoid'
+# require 'carrierwave/mongoid'
 
 class App
   include Mongoid::Document
@@ -11,5 +11,6 @@ class App
 
   accepts_nested_attributes_for :platform
 
+  validates :name, :presence => true
 
 end

@@ -2,12 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails',    '3.2.6'
 
-gem "mongoid"
+gem "mongoid",	"~> 3.0.5"
 gem 'bson_ext',   '~> 1.6.4'
 
 gem 'bourbon'
-gem 'mongoid_slug'
-gem 'carrierwave-mongoid'
+gem 'mongoid_slug', :git => 'git://github.com/digitalplaywright/mongoid-slug.git'
 
 group :development, :test do
   gem 'hirb'

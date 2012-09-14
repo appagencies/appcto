@@ -1,4 +1,4 @@
-require 'carrierwave/mongoid'
+#require 'carrierwave/mongoid'
 
 class Company
   include Mongoid::Document
@@ -18,7 +18,7 @@ class Company
   embeds_many :platforms, as: :platformable
   belongs_to :user
 
-	mount_uploader :logo, LogoUploader
+	#mount_uploader :logo, LogoUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

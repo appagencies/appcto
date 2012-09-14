@@ -40,10 +40,10 @@
     = render partial: "companies/subregion_select", locals: {:l => l, parent_region: l.object.country}
 
 .field
-  = f.label :logo
-  = image_tag @company.logo_url if @company.logo?
-  = f.file_field :logo
-  = f.hidden_field :logo_cache
+  -# = f.label :logo
+  -# = image_tag @company.logo_url if @company.logo?
+  -# = f.file_field :logo
+  -# = f.hidden_field :logo_cache
 
 .actions
   = f.submit

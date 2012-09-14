@@ -1,18 +1,19 @@
 class AppsController < ApplicationController
-  def index
-    @company = Company.find_by_slug params[:company_id]
+  load_and_authorize_resource :company
+  load_and_authorize_resource :app, :through => :company
 
-    @apps = @company.apps.all
+  def index
+    company = Company.find params[:company_id]
+    @apps = company.apps.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @apps }
     end
   end
 
   def show
-    @company = current_user.company
-    @app = @company.apps.find params[:id]
+    company = Company.find params[:company_id]
+    @app = company.apps.find params[:id]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,8 +22,8 @@ class AppsController < ApplicationController
   end
 
   def new
-    @company = Company.new(:budget => 0)
-    @company.build_location
+    company = Company.find params[:company_id]
+    @app = company.apps.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -30,33 +31,45 @@ class AppsController < ApplicationController
     end
   end
 
+  def create
+    company = Company.find params[:company_id]
+    @app = company.apps.create params[:app]
+
+    respond_to do |format|
+      if @app.save
+        format.html { redirect_to([@app.company, @app], :notice => 'App was succesfully created.')}
+      else
+        format.html { render :action => "new" }
+      end
+    end
+
+  end
+
   def edit
-    @company = Company.find_by_slug params[:id]
-    authorize! :edit, @company
+    company = Company.find params[:company_id]
+    @app = company.apps.find params[:id]
   end
 
   def update
-    @company = Company.find_by_slug params[:id]
-    params[:company][:skills] ||= []
+    company = Company.find params[:company_id]
+    @app = company.apps.find params[:id]
 
     respond_to do |format|
-      if @company.update_attributes(params[:company])
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { head :no_content }
+      if @app.update_attributes(params[:app])
+        format.html { redirect_to [@app.company, @app], notice: 'Company was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @company = Company.find_by_slug params[:id]
-    @company.destroy
+    company = Company.find params[:company_id]
+    @app = company.apps.find params[:id]
+    @app.destroy
 
     respond_to do |format|
-      format.html { redirect_to companies_url }
-      format.json { head :no_content }
+      format.html { redirect_to company_apps_url }
     end
   end
 end
