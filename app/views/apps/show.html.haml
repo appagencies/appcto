@@ -2,7 +2,16 @@
   %p
     %b Name:
     = @app.name
+  %p
+    %b Description:
+    = @app.description
+
+  %p
+    %b Link:
+    = link_to "Download App", @app.link
 
   = link_to "Back", company_apps_path(@app.company)
-  = link_to 'Edit', edit_company_app_path(@app.company, @app)
-  = link_to "Delete App", [@app.company, @app], :confirm => 'Are you sure?', :method => :delete
+
+  - if can? :update, @app
+    = link_to 'Edit', edit_company_app_path(@app.company, @app)
+    = link_to "Delete App", [@app.company, @app], :confirm => 'Are you sure?', :method => :delete

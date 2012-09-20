@@ -4,6 +4,10 @@ module CompaniesHelper
 
   PLATFORMS = %w[ios android blackberry windows]
 
+  def budget_to_string(int)
+    BUDGETS[int][:string]
+  end
+
   def budget_to_shortstring(int)
     BUDGETS[int][:shortstring]
   end
@@ -17,6 +21,10 @@ module CompaniesHelper
         end
       end
     end
+  end
+
+  def pf_active?(platform)
+    return 'active' if @platforms.include?(platform)
   end
 
 end

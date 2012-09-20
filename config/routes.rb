@@ -27,9 +27,6 @@ Appcto::Application.routes.draw do
   match 'legal/privacy' => 'about#privacy'
   match 'legal/terms' => 'about#terms'
 
-  match '/:country' => 'companies#index'
-  match '/:country/:region' => 'companies#index'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

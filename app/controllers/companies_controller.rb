@@ -1,29 +1,14 @@
 class CompaniesController < ApplicationController
-  def subregion_options
-    render partial: "subregion_select"
-  end
 
   def index
-    country = params[:country]
-    region = params[:region]
-
     budget = params[:budget]
+    @platforms = params[:platform] ||= []
 
-
-    if country
-      @companies = Company.by_country(country)
-      if region
-        @companies = @companies.by_region(region)
-      end
-    else
-      @companies = Company.is_approved.all
-    end
-
-    @companies = budget.blank? ? @companies : @companies.where("budget" => budget)
+    @companies = Company.all
+    @companies = budget.blank? ? @companies : @companies.by_budget(budget)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @companies }
     end
   end
 
@@ -52,10 +37,6 @@ class CompaniesController < ApplicationController
     authorize! :edit, @company
   end
 
-  def loc
-    respond_to :json
-  end
-
   def update
     @company = Company.find params[:id]
     params[:company][:skills] ||= []
@@ -79,5 +60,13 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url }
       format.json { head :no_content }
     end
+  end
+
+  def subregion_options
+    render partial: "subregion_select"
+  end
+
+  def loc
+    respond_to :json
   end
 end

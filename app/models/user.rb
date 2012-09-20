@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
 
   attr_accessible :email, :password, :remember_me, :company_attributes, :role
-  has_one :company, autosave: true
+  has_one :company, autosave: true, dependent: :destroy
   accepts_nested_attributes_for :company
 
   # Include default devise modules. Others available are:

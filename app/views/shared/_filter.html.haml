@@ -1,23 +1,28 @@
+= params[:platform]
+
 #filter
   .inner
-    = form_tag(:action => :index) do
+    %form{:action => companies_path, :method => "get"}
       .filter#platforms
         %label Platform
-        .platform-options
-          %ul
-            %li.ios{'data-filter' => 'ios', 'data-title' => 'iOS'}
-              .icon
-            %li.android.active{'data-filter' => 'android', 'data-title' => 'Android'}
-              .icon
-            %li.blackberry{'data-filter' => 'blackberry', 'data-title' => 'BlackBerry'}
-              .icon
-            %li.windows.active{'data-filter' => 'windows', 'data-title' => 'Windows'}
-              .icon
+        %ul.platform-options
+          %li.ios{'data-filter' => 'ios', 'data-title' => 'iOS', :class => pf_active?("ios")}
+            = label_tag "platform_ios", "ios"
+            = check_box_tag "platform[]", "ios", @platforms.include?("ios")
+            .icon
+          %li.android{'data-filter' => 'android', 'data-title' => 'Android', :class => pf_active?("android")}
+            = label_tag "platform_android", "android"
+            = check_box_tag "platform[]", "android", @platforms.include?("android")
+            .icon
+          %li.blackberry{'data-filter' => 'blackberry', 'data-title' => 'BlackBerry', :class => pf_active?("blackberry")}
+            = label_tag "platform_blackberry", "blackberry"
+            = check_box_tag "platform[]", "blackberry", @platforms.include?("blackberry")
+            .icon
+          %li.windows{'data-filter' => 'windows', 'data-title' => 'Windows', :class => pf_active?("windows")}
+            = label_tag "platform_windows", "windows"
+            = check_box_tag "platform[]", "windows", @platforms.include?("windows")
+            .icon
 
-          .hide
-            - CompaniesHelper::PLATFORMS.each do |value|
-              = check_box_tag "filter_skills_#{value}", value
-              = label_tag "filter_skills_#{value}", value
       .filter#location
         %label Location
         .location-options
@@ -26,9 +31,13 @@
       .filter#budget
         %label Budget
         .budget-options
-          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}), :class => "select-btn"
+          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}, params[:budget].to_i), :class => "select-btn", :name => "budget"
 
-      .actions.hide
-        = submit_tag "Filter"
+      .actions
+        = submit_tag "Filter", :name => nil
 #result_summary
-  %p.inner Showing 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from <b>$5,000$ - $15,000</b>:
+  %p.inner
+    Showing 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from
+    %b
+      - if params[:budget]
+        = budget_to_string(params[:budget].to_i) + ":"

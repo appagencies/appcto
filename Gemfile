@@ -20,6 +20,8 @@ gem 'jquery-rails'
 gem 'carmen-rails'
 gem 'wicked'
 
+gem 'itunes-search'
+
 gem 'rails_admin'
 
 gem 'select2-rails'

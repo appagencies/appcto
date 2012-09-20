@@ -29,17 +29,13 @@ class Company
 
   accepts_nested_attributes_for :location, :apps, :platforms
 
-  class << self
-    def by_country(country)
-      where('location.country' => country.upcase)
-    end
-    def by_region(region)
-      where('location.region' => region.upcase)
-    end
-    def is_approved
-      where(:approved => true)
-    end
-  end
+  default_scope where(approved: false)
+
+  scope :by_budget,   ->(budget){ where(budget: budget) }
+  scope :by_country,  ->(country){ where('location.country' => country.upcase) }
+  scope :by_region,   ->(region){ where('location.region' => region.upcase) }
+
+  private
 
   def is_approved?
     self.approved == true
