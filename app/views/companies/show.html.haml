@@ -9,7 +9,7 @@
 
   %p
     %b Budget:
-    = @company.budget
+    = budget_to_string(@company.budget)
 
   %p
     %b Description:
@@ -27,12 +27,10 @@
     %b Country:
     - countryobject = Carmen::Country.coded(@company.location.country)
     = countryobject.name
-    = @company.location.country
 
   %p
     %b Region:
     = countryobject.subregions.coded(@company.location.region).name
-    = @company.location.region
 
   %p
     -#= image_tag @company.logo_url

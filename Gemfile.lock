@@ -66,6 +66,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     haml (3.1.7)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -182,10 +184,12 @@ DEPENDENCIES
   carmen-rails
   coffee-rails (~> 3.2.1)
   devise
+  faker
   haml-rails
   hirb
   itunes-search
   jquery-rails
+  kaminari
   mongoid (~> 3.0.5)
   mongoid_slug!
   rails (= 3.2.6)

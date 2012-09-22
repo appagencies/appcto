@@ -10,6 +10,8 @@ class App
 
   embeds_one :platform, as: :platformable
 
+  attr_accessible :name, :description, :link
+
   accepts_nested_attributes_for :platform
 
   validates :name, :presence => true

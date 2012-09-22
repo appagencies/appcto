@@ -10,6 +10,7 @@ gem 'mongoid_slug', :git => 'git://github.com/digitalplaywright/mongoid-slug.git
 
 group :development, :test do
   gem 'hirb'
+  gem 'faker'
 end
 
 gem 'haml-rails'
@@ -23,6 +24,8 @@ gem 'wicked'
 gem 'itunes-search'
 
 gem 'rails_admin'
+
+gem 'kaminari'
 
 gem 'select2-rails'
 

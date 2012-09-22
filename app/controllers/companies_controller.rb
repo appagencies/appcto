@@ -4,11 +4,12 @@ class CompaniesController < ApplicationController
     budget = params[:budget]
     @platforms = params[:platform] ||= []
 
-    @companies = Company.all
+    @companies = Company.all.page params[:page]
     @companies = budget.blank? ? @companies : @companies.by_budget(budget)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
     end
   end
 

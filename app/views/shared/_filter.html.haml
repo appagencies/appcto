@@ -1,5 +1,3 @@
-= params[:platform]
-
 #filter
   .inner
     %form{:action => companies_path, :method => "get"}
@@ -31,7 +29,7 @@
       .filter#budget
         %label Budget
         .budget-options
-          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}, params[:budget].to_i), :class => "select-btn", :name => "budget"
+          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}, params[:budget].to_i), :prompt => 'Any Budget', :class => "select-btn", :name => "budget"
 
       .actions
         = submit_tag "Filter", :name => nil

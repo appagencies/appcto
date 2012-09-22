@@ -4,6 +4,8 @@ class Company
   include Mongoid::Document
   include Mongoid::Slug
 
+  paginates_per 10
+
   field :name
   field :budget, type: Integer, default: 0
   field :description
@@ -29,16 +31,22 @@ class Company
 
   accepts_nested_attributes_for :location, :apps, :platforms
 
-  default_scope where(approved: false)
+  #default_scope where(approved: true)
 
   scope :by_budget,   ->(budget){ where(budget: budget) }
   scope :by_country,  ->(country){ where('location.country' => country.upcase) }
   scope :by_region,   ->(region){ where('location.region' => region.upcase) }
 
-  private
-
   def is_approved?
     self.approved == true
+  end
+
+  def filter(filter)
+    if filter
+
+    else
+      all
+    end
   end
 
 end
