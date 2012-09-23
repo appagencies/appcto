@@ -1,2 +1,2 @@
-$('#companies').append('<%= escape_javascript render(@companies) %>');
-$('.paginator').replaceWith('<%= escape_javascript(link_to_next_page(@companies, 'Load More', :remote => true))%>')
+$('#companies').html('<%= escape_javascript render(@companies) %>');
+$('#paginator').html('<%= escape_javascript(link_to_next_page(@companies, 'Show More Companies', :remote => true, :disable_with => "Loading..."))%>')

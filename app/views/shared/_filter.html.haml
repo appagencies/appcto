@@ -35,7 +35,11 @@
         = submit_tag "Filter", :name => nil
 #result_summary
   %p.inner
-    Showing 50 <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from
+    Showing
+    = @companies.count
+    <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from
     %b
-      - if params[:budget]
+      - if params[:budget].blank?
+        = "Any Budget:"
+      - else
         = budget_to_string(params[:budget].to_i) + ":"

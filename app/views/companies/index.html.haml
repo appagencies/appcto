@@ -7,4 +7,4 @@
         = render 'company', :company => company
 
   #paginator
-    = link_to_next_page @companies, 'Load More', :param_name => :page, :remote => true
+    = link_to_next_page @companies, 'Show More Companies', :param_name => :page, :remote => true, :disable_with => "Loading..."
