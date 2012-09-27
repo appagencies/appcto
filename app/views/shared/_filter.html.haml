@@ -6,19 +6,19 @@
         %ul.platform-options
           %li.ios{'data-filter' => 'ios', 'data-title' => 'iOS', :class => pf_active?("ios")}
             = label_tag "platform_ios", "ios"
-            = check_box_tag "platform[]", "ios", @platforms.include?("ios")
+            = check_box_tag "platform[]", "ios", @platform.include?("ios")
             .icon
           %li.android{'data-filter' => 'android', 'data-title' => 'Android', :class => pf_active?("android")}
             = label_tag "platform_android", "android"
-            = check_box_tag "platform[]", "android", @platforms.include?("android")
+            = check_box_tag "platform[]", "android", @platform.include?("android")
             .icon
           %li.blackberry{'data-filter' => 'blackberry', 'data-title' => 'BlackBerry', :class => pf_active?("blackberry")}
             = label_tag "platform_blackberry", "blackberry"
-            = check_box_tag "platform[]", "blackberry", @platforms.include?("blackberry")
+            = check_box_tag "platform[]", "blackberry", @platform.include?("blackberry")
             .icon
           %li.windows{'data-filter' => 'windows', 'data-title' => 'Windows', :class => pf_active?("windows")}
             = label_tag "platform_windows", "windows"
-            = check_box_tag "platform[]", "windows", @platforms.include?("windows")
+            = check_box_tag "platform[]", "windows", @platform.include?("windows")
             .icon
 
       .filter#location

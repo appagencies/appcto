@@ -3,3 +3,5 @@
 
   = form_for @app, :url => wizard_path, :method => :put do |f|
     = render "apps/form", :f => f
+
+  = link_to 'skip for now', next_wizard_path

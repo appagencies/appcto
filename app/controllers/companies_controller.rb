@@ -1,11 +1,9 @@
 class CompaniesController < ApplicationController
 
   def index
-    budget = params[:budget]
-    @platforms = params[:platform] ||= []
+    @platform = params[:platform] ||= []
 
-    @companies = Company.all.page params[:page]
-    @companies = budget.blank? ? @companies : @companies.by_budget(budget)
+    @companies = Company.filter(params).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,3 +1,6 @@
+require "#{Rails.root}/app/helpers/companies_helper"
+include CompaniesHelper
+
 namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
@@ -24,11 +27,14 @@ def make_companies
     name = Faker::Company.name
     description = Faker::Lorem.paragraph(5)
     budget = rand(0..3)
+    all_platforms = PLATFORMS
+    platform = all_platforms.sample(rand(1..all_platforms.count))
     website = 'http://' + Faker::Internet.domain_name
     user.create_company(:name => name,
                         :description => description,
                         :budget => budget,
                         :email => user.email,
+                        :platform => platform,
                         :website => website,
                         :approved => true)
   end

@@ -5,14 +5,11 @@ class App
   field :name
   field :description
   field :link
+  field :platform
 
   embedded_in :company
 
-  embeds_one :platform, as: :platformable
-
-  attr_accessible :name, :description, :link
-
-  accepts_nested_attributes_for :platform
+  attr_accessible :name, :description, :link, :platform
 
   validates :name, :presence => true
   validates :description, length: { maximum: 250 }

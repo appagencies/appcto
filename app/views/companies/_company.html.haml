@@ -3,6 +3,7 @@
     %h1.company-name= link_to company.name, company
     .company-location= Carmen::Country.coded(company.location.country).name
     .company-budget= budget_to_shortstring(company.budget)
+    .company-plat= company.platform
     - company.apps.cover.each do |app|
       .apps
         .app-name= link_to app.name, company_app_path(company, app)

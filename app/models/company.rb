@@ -9,6 +9,7 @@ class Company
   field :name
   field :budget, type: Integer, default: 0
   field :description
+  field :platform, type: Array, default: []
   field	:email
   field	:website
   field :user_id
@@ -17,7 +18,6 @@ class Company
   embeds_one :location
   embeds_many :apps
 
-  embeds_many :platforms, as: :platformable
   belongs_to :user
 
 	#mount_uploader :logo, LogoUploader
@@ -29,24 +29,26 @@ class Company
   validates :name, :length => { :maximum => 100 }, :uniqueness => { :case_sensitive => false }
   validates :email, format: { with: VALID_EMAIL_REGEX }, :allow_blank => true
 
-  accepts_nested_attributes_for :location, :apps, :platforms
+  accepts_nested_attributes_for :location, :apps
 
   #default_scope where(approved: true)
 
   scope :by_budget,   ->(budget){ where(budget: budget) }
   scope :by_country,  ->(country){ where('location.country' => country.upcase) }
   scope :by_region,   ->(region){ where('location.region' => region.upcase) }
+  scope :by_platform, ->(platform){ any_in(platform: platform) }
 
   def is_approved?
     self.approved == true
   end
 
-  def filter(filter)
-    if filter
+  private
 
-    else
-      all
-    end
+  def self.filter(params)
+    companies = all
+    companies = companies.by_budget(params[:budget]) if params[:budget].present?
+    companies = companies.by_platform(params[:platform]) if params[:platform].present?
+    companies
   end
 
 end

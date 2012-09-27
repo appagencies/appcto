@@ -24,7 +24,7 @@ module CompaniesHelper
   end
 
   def pf_active?(platform)
-    return 'active' if @platforms.include?(platform)
+    return 'active' if @platform.include?(platform)
   end
 
 end
