@@ -19,13 +19,16 @@ gem 'cancan'
 
 gem 'jquery-rails'
 gem 'carmen-rails'
-gem 'wicked'
 
-gem 'itunes-search'
+gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
+
+gem 'wicked'
 
 gem 'rails_admin'
 
 gem 'kaminari'
+
+
 
 gem 'select2-rails'
 

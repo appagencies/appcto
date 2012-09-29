@@ -22,13 +22,4 @@ $ ->
 
   $(".select-btn").select2 minimumResultsForSearch: 10, width: 'off'
 
-  $("#location_select").select2
-    placeholder: "Search for a movie"
-    minimumInputLength: 1
-    width: "100px"
-
-  	ajax:
-  		url: '/companies/location.json'
-  		dataType: 'json'
-
   $('.platform-options li').tooltip placement: 'bottom'

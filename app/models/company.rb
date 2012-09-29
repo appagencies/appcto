@@ -20,6 +20,8 @@ class Company
 
   belongs_to :user
 
+  index({ 'location.coordinates' => '2d' },{ background: true, sparse: true })
+
 	#mount_uploader :logo, LogoUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -37,6 +39,7 @@ class Company
   scope :by_country,  ->(country){ where('location.country' => country.upcase) }
   scope :by_region,   ->(region){ where('location.region' => region.upcase) }
   scope :by_platform, ->(platform){ any_in(platform: platform) }
+  scope :by_location, ->(location){ near('location.coordinates' => Geocoder.coordinates(location)) }
 
   def is_approved?
     self.approved == true
@@ -48,6 +51,7 @@ class Company
     companies = all
     companies = companies.by_budget(params[:budget]) if params[:budget].present?
     companies = companies.by_platform(params[:platform]) if params[:platform].present?
+    companies = companies.by_location(params[:location]) if params[:location].present?
     companies
   end
 

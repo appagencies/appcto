@@ -24,7 +24,8 @@
       .filter#location
         %label Location
         .location-options
-          = select_tag "location_select"
+          = search_field_tag :location, params[:location]
+          -#= select_tag "location_select"
 
       .filter#budget
         %label Budget
@@ -33,11 +34,17 @@
 
       .actions
         = submit_tag "Filter", :name => nil
+
 #result_summary
   %p.inner
     Showing
     = @companies.count
-    <b>iOS / Blackberry / Windows Mobile</b> developers from <b>San Francisco</b> who’s fee ranges from
+    - if params[:platform].present?
+      %b= params[:platform].to_sentence(:words_connector => " / ", :two_words_connector => " / ", :last_word_connector => " / ").titleize
+    developers from
+    - if params[:location].present?
+      %b= params[:location]
+    who’s fee ranges from
     %b
       - if params[:budget].blank?
         = "Any Budget:"

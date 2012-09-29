@@ -39,6 +39,10 @@
     = l.country_select :country, priority: %w(US CA), prompt: 'Please select a country'
     = render partial: "companies/subregion_select", locals: {:l => l, parent_region: l.object.country}
 
+    .field
+      = l.label :city
+      = l.text_field :city
+
 .field
   -# = f.label :logo
   -# = image_tag @company.logo_url if @company.logo?

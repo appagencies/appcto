@@ -46,6 +46,7 @@ def make_locations
     country = "US"
     region = Faker::Address.state_abbr
     company.create_location(:country => country,
-                            :region => region)
+                            :region => region,
+                            :city => "San Francisco")
   end
 end
