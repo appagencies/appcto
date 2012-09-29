@@ -22,11 +22,11 @@ class AfterRegisterController < ApplicationController
     case step
     when :add_company
       @company = @user.create_company(params[:company])
-
+      flash[:mixpanel_record] = "'Created Company'"
       render_wizard @company
     when :add_apps
       @app = @user.company.apps.create!(params[:app])
-
+      flash[:mixpanel_record] = "'Created App'"
       render_wizard @app
     end
 
