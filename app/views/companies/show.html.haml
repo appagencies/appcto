@@ -1,7 +1,7 @@
 .inner
   - if !@company.is_approved?
     .pending-review
-      Your company isn't publicly visible yet while pending review.
+      Your company isn't publicly visible yet while pending approval.
 
   %p
     %b Name:
@@ -16,8 +16,7 @@
     = @company.description
 
   %p
-    %b Email:
-    = @company.email
+    = mail_to @company.email, "Contact Us", :encode => "hex"
 
   %p
     %b Platforms:
@@ -33,7 +32,25 @@
     = countryobject.subregions.coded(@company.location.region).name
 
   %p
+    %b City:
+    = @company.location.city
+
+  %p
     -#= image_tag @company.logo_url
+
+  %h2 Apps
+  - @apps.each do |app|
+    %p
+      %b App Name:
+      = app.name
+
+    %p
+      %b App Description:
+      = app.description
+
+    %p
+      %b App Link:
+      = app.link
 
 
   - if can? :update, @company

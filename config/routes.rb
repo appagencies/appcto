@@ -20,10 +20,9 @@ Appcto::Application.routes.draw do
     resources :apps
   end
 
-  ####
+  #### Static Pages
 
-  match 'about' => 'about#index'
-
+  match 'about' => 'about#about'
   match 'legal/privacy' => 'about#privacy'
   match 'legal/terms' => 'about#terms'
 

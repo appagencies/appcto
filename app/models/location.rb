@@ -3,7 +3,7 @@ class Location
   include Geocoder::Model::Mongoid
 
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 
   validates :country, :presence => true
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',    '3.2.6'
+gem 'rails',    '3.2.8'
 
 gem "mongoid",	"~> 3.0.5"
 gem 'bson_ext',   '~> 1.6.4'
@@ -11,6 +11,7 @@ gem 'mongoid_slug', :git => 'git://github.com/digitalplaywright/mongoid-slug.git
 group :development, :test do
   gem 'hirb'
   gem 'faker'
+  gem 'brakeman'
 end
 
 gem 'haml-rails'

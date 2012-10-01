@@ -8,7 +8,7 @@ class AfterRegisterController < ApplicationController
     @user = current_user
     case step
     when :add_company
-      @company = @user.build_company(:email => current_user.email, :website => ("http://" + current_user.email.split("@").last))
+      @company = @user.build_company(:email => current_user.email, :website => ("http://" + current_user.email.split("@").last), :platform => ["ios","android","blackberry","windows"])
       @company.build_location
     when :add_apps
       @app = @user.company.apps.build

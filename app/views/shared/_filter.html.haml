@@ -24,7 +24,7 @@
       .filter#location
         %label Location
         .location-options
-          = search_field_tag :location, params[:location]
+          = search_field_tag :location, params[:location], :placeholder => "City, State or Country"
           -#= select_tag "location_select"
 
       .filter#budget
@@ -37,16 +37,18 @@
 
 #result_summary
   %p.inner
-    Showing
-    = @companies.count
+    %b= @companies.count
     - if params[:platform].present?
       %b= params[:platform].to_sentence(:words_connector => " / ", :two_words_connector => " / ", :last_word_connector => " / ").titleize
     developers from
     - if params[:location].present?
-      %b= params[:location]
+      %b= Geocoder.search(params[:location])[0].address
+    - else
+      %b Everywhere
     who’s fee ranges from
     %b
       - if params[:budget].blank?
-        = "Any Budget:"
+        Any Budget
       - else
-        = budget_to_string(params[:budget].to_i) + ":"
+        = budget_to_string(params[:budget].to_i)
+    match your criteria

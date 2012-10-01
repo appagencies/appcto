@@ -1,6 +1,6 @@
 %nav#subnav
   %ul
-    %li= link_to "About", about_path
+    %li= link_to_unless_current "About", about_path
     %li= link_to "Blog", "#"
     %li= mail_to "contact@appagencies.com", "Contact"
 
@@ -8,8 +8,8 @@
 
 %nav#legal
   %ul
-    %li= link_to "Terms", legal_terms_path
-    %li= link_to "Privacy", legal_privacy_path
+    %li= link_to_unless_current "Terms", legal_terms_path
+    %li= link_to_unless_current "Privacy", legal_privacy_path
 
 %nav#social
   %span Join us on

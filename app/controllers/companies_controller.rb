@@ -13,6 +13,8 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find params[:id]
+    @apps = @company.apps.all
+
     authorize! :read, @company
 
     respond_to do |format|

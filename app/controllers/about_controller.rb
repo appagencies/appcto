@@ -1,5 +1,5 @@
 class AboutController < ApplicationController
-  def index
+  def about
   	@users = User.all
   end
   def legal
