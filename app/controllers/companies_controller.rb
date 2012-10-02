@@ -62,12 +62,4 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def subregion_options
-    render partial: "subregion_select"
-  end
-
-  def loc
-    respond_to :json
-  end
 end

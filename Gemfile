@@ -17,9 +17,10 @@ end
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'jquery-rails'
-gem 'carmen-rails'
 
 gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
 

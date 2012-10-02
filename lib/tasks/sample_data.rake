@@ -43,10 +43,7 @@ end
 def make_locations
   puts "Creating company locations..."
   Company.all.each do |company|
-    country = "US"
-    region = Faker::Address.state_abbr
-    company.create_location(:country => country,
-                            :region => region,
-                            :city => "San Francisco")
+    city = Faker::Address.city
+    company.create_location(:name => city)
   end
 end

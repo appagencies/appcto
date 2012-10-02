@@ -10,16 +10,6 @@ $ ->
     $(".flash-message").slideUp()
   setTimeout flashCallback, 3000
 
-  $('select#company_location_attributes_country').change ->
-    select_wrapper = $('#region_wrapper')
-
-    $('select', select_wrapper).attr('disabled', true)
-
-    country_code = $(this).val()
-
-    url = "/companies/subregion_options?parent_region=#{country_code}"
-    select_wrapper.load(url)
-
   $(".select-btn").select2 minimumResultsForSearch: 10, width: 'off'
 
   $('.platform-options li').tooltip placement: 'bottom'

@@ -12,17 +12,6 @@ module CompaniesHelper
     BUDGETS[int][:shortstring]
   end
 
-  def all_countries_and_regions
-    Carmen::Country.all.map do |country|
-      country.name
-      if country.subregions?
-        country.subregions do |region|
-          region.name
-        end
-      end
-    end
-  end
-
   def pf_active?(platform)
     return 'active' if @platform.include?(platform)
   end

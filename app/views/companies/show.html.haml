@@ -1,15 +1,17 @@
-.inner
-  - if !@company.is_approved?
+.inner.company-profile
+  - unless @company.is_approved?
     .pending-review
       Your company isn't publicly visible yet while pending approval.
 
-  %p
-    %b Name:
-    = @company.name
-
-  %p
-    %b Budget:
-    = budget_to_string(@company.budget)
+  %header
+    %figure.company-logo= image_tag @company.logo_url if @company.logo_url.present?
+    %h1.company-name= @company.name
+    .company-budget
+      %span Average fee
+      = budget_to_string(@company.budget)
+    .company-location
+      %span Located in
+      = link_to @company.location.name, companies_path(:location => @company.location.name)
 
   %p
     %b Description:
@@ -21,22 +23,6 @@
   %p
     %b Platforms:
     = @company.platform.to_sentence
-
-  %p
-    %b Country:
-    - countryobject = Carmen::Country.coded(@company.location.country)
-    = countryobject.name
-
-  %p
-    %b Region:
-    = countryobject.subregions.coded(@company.location.region).name
-
-  %p
-    %b City:
-    = @company.location.city
-
-  %p
-    -#= image_tag @company.logo_url
 
   %h2 Apps
   - @apps.each do |app|

@@ -1,4 +1,4 @@
-#require 'carrierwave/mongoid'
+require 'carrierwave/mongoid'
 
 class Company
   include Mongoid::Document
@@ -22,9 +22,11 @@ class Company
 
   index({ 'location.coordinates' => '2d' },{ background: true, sparse: true })
 
-	#mount_uploader :logo, LogoUploader
+	mount_uploader :logo, LogoUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  attr_accessible :name, :budget, :description, :platform, :email, :website, :logo
 
   slug :name
   validates :name, :presence => true
@@ -36,8 +38,6 @@ class Company
   #default_scope where(approved: true)
 
   scope :by_budget,   ->(budget){ where(budget: budget) }
-  scope :by_country,  ->(country){ where('location.country' => country.upcase) }
-  scope :by_region,   ->(region){ where('location.region' => region.upcase) }
   scope :by_platform, ->(platform){ any_in(platform: platform) }
   scope :by_location, ->(location){ near('location.coordinates' => Geocoder.coordinates(location)) }
 
