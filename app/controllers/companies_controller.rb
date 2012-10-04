@@ -35,6 +35,7 @@ class CompaniesController < ApplicationController
 
   def edit
     @company = Company.find params[:id]
+
     authorize! :edit, @company
   end
 

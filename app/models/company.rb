@@ -15,7 +15,7 @@ class Company
   field :user_id
   field :approved, type: Boolean, default: 0
 
-  embeds_one :location
+  embeds_one :location, autobuild: true
   embeds_many :apps
 
   belongs_to :user

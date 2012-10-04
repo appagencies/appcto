@@ -10,4 +10,6 @@ class Location
 
   embedded_in :company
 
+  attr_accessible :name
+
 end
