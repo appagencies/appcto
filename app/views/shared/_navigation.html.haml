@@ -3,8 +3,7 @@
     -if !current_user.company
       %li= link_to "You haven't added your company yet. List it now!", after_register_path(:add_company), :class => "getlisted notice"
     -else
-      %li= link_to "View listing", current_user.company
-      %li= link_to "Edit listing", edit_company_path(current_user.company)
+      %li= link_to "Your Listing", current_user.company
     %li= link_to 'Settings', edit_registration_path(current_user)
     %li= link_to 'Logout', destroy_user_session_path, :method => 'delete'
   - else

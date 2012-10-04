@@ -1,33 +1,125 @@
 .company-profile
+  .pending-review
+    margin: 0 0 10px 0
+    background: #FCF8E3
+    color: #C09853
+    padding: 10px
+    @include border-radius(2px)
+    border: 1px solid #debb80
+
   header
-    margin: 10px 0
-    border: 1px solid #c3c3c3
-    @include clearfix
-    @include border-radius(4px)
-    @include box-shadow(inset 0 1px 0 #fff)
-    background: #fff image-url("listing-bg.png") repeat-x top left
+    border-bottom: 1px solid #dadada
+    padding: 10px 0
+
+    .company-dashboard
+      position: relative
+      @include clearfix
+      border-bottom: 1px solid #dadada
+      padding-bottom: 10px
+      margin-bottom: 10px
+
+
+    .company-info
+      position: relative
+      @include clearfix
 
     .company-logo
       float: left
       height: 180px
       width: 180px
       line-height: 180px
-      margin: 10px
+      border: 1px solid #f0f0f0
       text-align: center
-      background: #f9f9f9
-      @include border-radius(4px)
-      @include box-shadow(inset 0 1px 5px rgba(0,0,0,.1))
+      background: #fff
+      margin: 0 10px 0 0
+      @include border-radius(2px)
       img
         vertical-align: middle
+        max-height: 180px
+        max-width: 180px
 
     .company-name
-      margin: 10px 0 0 10px
+      margin: 0
       font-size: 36px
     .company-budget
-      margin: 0 0 0 10px
+      margin: 0
+      color: #666
+      font-size: 12px
     .company-location
-      margin: 0 0 0 10px
+      margin: 0
+      color: #666
+      font-size: 12px
       a
         color: $blue
+        text-decoration: none
         &:hover
           color: shade($blue, 10%)
+    .company-website
+      a
+        color: #666
+        font-size: 12px
+        text-decoration: none
+        background: image-url("newwindow-icon.png") no-repeat right center
+        padding-right: 12px
+
+    .company-desc
+      margin-top: 10px
+      width: 80%
+
+    .actions
+      .hire-btn
+        background: $blue image-url("hire-icon.png") no-repeat 20px center
+        padding-left: 45px
+        position: absolute
+        right: 0
+        bottom: 0
+      .edit-btn
+        background: #bbb image-url("edit-icon.png") no-repeat 20px center
+        padding-left: 45px
+        float: right
+        &:hover
+          background-color: shade(#bbb, 30%)
+      a
+        background: $blue
+        padding: 10px 20px
+        color: white
+        text-decoration: none
+        text-shadow: 0 1px 0 rgba(0,0,0,.2)
+        @include border-radius(2px)
+        &:hover
+          background-color: shade($blue, 10%)
+
+.edit-listing
+  h1
+    border-bottom: 1px solid #dadada
+
+  .field
+    margin: 0 0 10px 0
+    padding: 0 0 10px 0
+    font-size: 14px
+    label
+      float: left
+      width: 20%
+      margin: 4px 0 5px 0
+      font-weight: bold
+
+    &.radio ul
+      margin: 5px 0 0 20%
+      padding: 0
+      list-style: none
+      li
+        margin: 0 0 5px 0
+        label
+          display: inline
+          float: none
+          width: auto
+          font-weight: normal
+        &:last-child
+          margin: 0
+
+  .form-actions
+    input
+      border: 1px solid #999
+      background: #ccc
+      padding: 10px 20px
+      @include border-radius(2px)

@@ -10,27 +10,33 @@
   = f.label :name
   = f.text_field :name
 
-.field
-  - CompaniesHelper::BUDGETS.each do |budget|
-    = f.radio_button :budget, budget[:id]
-    = f.label :budget, budget[:string], :value => budget[:id]
+.field.radio
+  = f.label :budget
+  %ul
+    - CompaniesHelper::BUDGETS.each do |budget|
+      %li
+        = f.radio_button :budget, budget[:id]
+        = f.label :budget, budget[:string], :value => budget[:id]
 
 .field
   = f.label :description
   = f.text_area :description
 
 .field
-  = f.label :email
-  = f.email_field :email
-
-.field
   = f.label :website
   = f.url_field :website
 
 .field
-  - CompaniesHelper::PLATFORMS.each do |value|
-    = check_box_tag "company_platform_#{value}", value, @company.platform.include?(value), :name => "company[platform][]"
-    = label_tag "company_platform_#{value}", value
+  = f.label :email, "Contact Email"
+  = f.email_field :email
+
+.field.radio
+  = f.label :platform
+  %ul
+    - CompaniesHelper::PLATFORMS.each do |value|
+      %li
+        = check_box_tag "company_platform_#{value}", value, @company.platform.include?(value), :name => "company[platform][]"
+        = label_tag "company_platform_#{value}", value
 
 .field
   = f.fields_for :location do |l|
@@ -43,5 +49,5 @@
   = f.file_field :logo
   = f.hidden_field :logo_cache
 
-.actions
+.form-actions
   = f.submit
