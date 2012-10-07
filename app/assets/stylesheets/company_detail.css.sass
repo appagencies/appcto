@@ -8,20 +8,13 @@
     border: 1px solid #debb80
 
   header
-    border-bottom: 1px solid #dadada
+    border-bottom: 1px solid #e1e1e1
     padding: 10px 0
 
-    .company-dashboard
-      position: relative
-      @include clearfix
-      border-bottom: 1px solid #dadada
-      padding-bottom: 10px
-      margin-bottom: 10px
-
-
     .company-info
-      position: relative
-      @include clearfix
+      .inner
+        position: relative
+        @include clearfix
 
     .company-logo
       float: left
@@ -43,12 +36,15 @@
       font-size: 36px
     .company-budget
       margin: 0
-      color: #666
-      font-size: 12px
+      color: #999
+      font-size: 14px
     .company-location
       margin: 0
-      color: #666
-      font-size: 12px
+      color: #999
+      font-size: 14px
+      span
+        background: image-url("location-icon.png") no-repeat left center
+        padding-left: 15px
       a
         color: $blue
         text-decoration: none
@@ -56,31 +52,38 @@
           color: shade($blue, 10%)
     .company-website
       a
-        color: #666
-        font-size: 12px
+        color: $blue
+        font-size: 14px
         text-decoration: none
         background: image-url("newwindow-icon.png") no-repeat right center
         padding-right: 12px
 
+    .company-platform
+      background: image-url("platform-small-icons.png") no-repeat top left
+      display: block
+      color: #999
+      font-size: 14px
+
     .company-desc
       margin-top: 10px
-      width: 80%
+      width: 50%
+      padding-left: 192px
 
     .actions
+      position: absolute
+      right: 0
+      bottom: 0
       .hire-btn
         background: $blue image-url("hire-icon.png") no-repeat 20px center
         padding-left: 45px
-        position: absolute
-        right: 0
-        bottom: 0
       .edit-btn
-        background: #bbb image-url("edit-icon.png") no-repeat 20px center
+        background: #999 image-url("edit-icon.png") no-repeat 20px center
         padding-left: 45px
-        float: right
         &:hover
-          background-color: shade(#bbb, 30%)
+          background-color: shade(#999, 30%)
       a
         background: $blue
+        display: inline-block
         padding: 10px 20px
         color: white
         text-decoration: none
@@ -92,34 +95,3 @@
 .edit-listing
   h1
     border-bottom: 1px solid #dadada
-
-  .field
-    margin: 0 0 10px 0
-    padding: 0 0 10px 0
-    font-size: 14px
-    label
-      float: left
-      width: 20%
-      margin: 4px 0 5px 0
-      font-weight: bold
-
-    &.radio ul
-      margin: 5px 0 0 20%
-      padding: 0
-      list-style: none
-      li
-        margin: 0 0 5px 0
-        label
-          display: inline
-          float: none
-          width: auto
-          font-weight: normal
-        &:last-child
-          margin: 0
-
-  .form-actions
-    input
-      border: 1px solid #999
-      background: #ccc
-      padding: 10px 20px
-      @include border-radius(2px)

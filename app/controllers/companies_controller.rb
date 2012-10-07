@@ -25,7 +25,6 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new(:budget => 0)
-    @company.build_location
 
     respond_to do |format|
       format.html # new.html.erb

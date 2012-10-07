@@ -1,39 +1,41 @@
-.company-profile.inner
+.company-profile
   %header
-    - unless !@company.is_approved?
-      .pending-review
-        Your company isn't publicly visible yet while pending approval.
-    .company-dashboard
-      .actions
-        = link_to "Edit Listing", edit_company_path(current_user.company), :class => 'edit-btn' if can? :update, @company
-
+    .inner
+      - unless !@company.is_approved?
+        .pending-review
+          Your company isn't publicly visible yet while pending approval.
     .company-info
-      %figure.company-logo= image_tag @company.logo_url if @company.logo_url.present?
-      %h1.company-name= @company.name
-      .company-location
-        %span Located in
-        = link_to @company.location.name, companies_path(:location => @company.location.name)
-      .company-budget
-        %span Average fee
-        = budget_to_string(@company.budget)
-        = @company.platform.to_sentence
-      .company-website
-        = link_to @company.website, @company.website, :target => "_blank"
-      .company-desc
-        = @company.description
-      .actions
-        = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn'
+      .inner
+        %figure.company-logo= image_tag @company.logo_url if @company.logo_url.present?
+        %h1.company-name= @company.name
+        .company-location
+          %span Located in
+          = link_to @company.location.name, companies_path(:location => @company.location.name)
+        .company-budget
+          %span Average fee
+          = budget_to_string(@company.budget)
+        .company-platform
+          %span We build
+          = @company.platform.to_sentence
+        .company-website
+          = link_to @company.website, @company.website, :target => "_blank"
+        .company-desc
+          = @company.description
+        .actions
+          = link_to "Edit Company", edit_company_path(current_user.company), :class => 'edit-btn' if can? :update, @company
+          = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn'
 
-  %h2 Apps
-  - @apps.each do |app|
-    %p
-      %b App Name:
-      = app.name
+  .inner
+    %h2 Apps
+    - if can? :update, @company => App
+      = link_to "Add App", new_company_app_path(current_user.company)
 
-    %p
-      %b App Description:
-      = app.description
-
-    %p
-      %b App Link:
-      = app.link
+    - @apps.each do |app|
+      - if can? :update, @company => App
+        = link_to "Edit App", edit_company_app_path(current_user.company, app)
+      %p
+        %figure= image_tag app.icon_url if app.icon_url.present?
+      %p
+        %b= link_to app.name, app.link
+      %p
+        = app.description

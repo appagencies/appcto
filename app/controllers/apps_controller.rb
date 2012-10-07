@@ -23,6 +23,7 @@ class AppsController < ApplicationController
   def new
     company = Company.find params[:company_id]
     @app = company.apps.build
+    @app.screenshots.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +47,7 @@ class AppsController < ApplicationController
   def edit
     company = Company.find params[:company_id]
     @app = company.apps.find params[:id]
+    @app.screenshots.build
   end
 
   def update

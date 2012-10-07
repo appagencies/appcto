@@ -7,6 +7,14 @@
     = @app.description
 
   %p
+    %b Icon:
+    %figure= image_tag @app.icon_url if @app.icon_url.present?
+
+  %p
+    %b Screenshots:
+    - @app.screenshots.each do |s|
+      = image_tag s.screenshot_url
+  %p
     %b Link:
     = link_to "Download App", @app.link
 

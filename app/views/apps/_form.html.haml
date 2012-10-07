@@ -18,5 +18,20 @@
   = f.label :link
   = f.url_field :link
 
-.actions
+.field
+  = f.label :icon
+  = image_tag @app.icon_url if @app.icon?
+  = f.file_field :icon
+  = f.hidden_field :icon_cache
+
+  = f.check_box :remove_icon
+  Remove Icon
+
+%h3 Photo Gallery
+.field
+  = f.fields_for :screenshots do |s|
+    = s.file_field :screenshot
+    = s.hidden_field :screenshot_cache
+
+.form-actions
   = f.submit

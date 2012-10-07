@@ -19,6 +19,7 @@ gem 'devise'
 gem 'cancan'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
 
 gem 'jquery-rails'
 
