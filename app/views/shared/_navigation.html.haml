@@ -4,9 +4,9 @@
       %li= link_to "You haven't added your company yet. List it now!", after_register_path(:add_company), :class => "getlisted notice"
     -else
       %li= link_to "Your Listing", current_user.company
-    %li= link_to 'Settings', edit_registration_path(current_user)
-    %li= link_to 'Logout', destroy_user_session_path, :method => 'delete'
+    %li= link_to 'Settings', settings_path
+    %li= link_to 'Logout', logout_path
   - else
     %li= link_to 'About', about_path
-    %li= link_to 'Login', new_user_session_path
+    %li= link_to 'Login', login_path
     %li= link_to 'Developer? Get Listed Now!', getlisted_path, :class => "getlisted"

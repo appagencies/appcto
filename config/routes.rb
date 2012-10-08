@@ -6,6 +6,8 @@ Appcto::Application.routes.draw do
   devise_scope :user do
     get "getlisted" => "registrations#new"
     get "login" => "devise/sessions#new"
+    get "logout" => "devise/sessions#destroy"
+    get "settings" => "registrations#edit"
   end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
