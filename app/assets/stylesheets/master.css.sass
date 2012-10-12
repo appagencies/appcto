@@ -42,11 +42,11 @@ body
     padding: 10px 0
     ul li
       display: inline-block
-      height: 24px
-      line-height: 24px 0
       padding: 13px 0
       margin: 0 0 0 20px
       vertical-align: middle
+      color: white
+      font-size: 14px
     .logout a
       background: image-url("logout-icon.png") no-repeat top left
       height: 20px
@@ -55,10 +55,16 @@ body
       display: inline-block
       &:hover
         background-position: 0 -20px
+    .upgrade a
+      background: image-url("pro-icon.png") no-repeat top left
+      padding-left: 25px
+    .current
+      background: #222
+      padding: 5px 10px
+      @include border-radius(2px)
     a
       text-decoration: none
       color: white
-      font-size: 14px
       &:hover
         color: shade(white, 10%)
       &.getlisted
@@ -274,6 +280,10 @@ body
 footer
   border-top: 1px solid #dadada
   @include clearfix
+  opacity: 0.5
+  @include transition(opacity, 0.5s)
+  &:hover
+    opacity: 1
 
   ul
     display: inline
