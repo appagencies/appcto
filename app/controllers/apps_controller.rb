@@ -6,6 +6,9 @@ class AppsController < ApplicationController
     company = Company.find params[:company_id]
     @apps = company.apps.all
 
+    @app = company.apps.build
+    @app.screenshots.build
+
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -36,7 +39,7 @@ class AppsController < ApplicationController
 
     respond_to do |format|
       if @app.save
-        format.html { redirect_to([@app.company, @app], :notice => 'App was succesfully created.')}
+        format.html { redirect_to(company_apps_path(company), :notice => 'App was succesfully created.')}
       else
         format.html { render :action => "new" }
       end

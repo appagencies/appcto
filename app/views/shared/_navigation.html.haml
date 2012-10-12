@@ -1,9 +1,11 @@
 %ul
   - if user_signed_in?
+    %li= link_to "Upgrade!", "#"
     -if !current_user.company
       %li= link_to "You haven't added your company yet. List it now!", after_register_path(:add_company), :class => "getlisted notice"
     -else
-      %li= link_to "Your Listing", current_user.company
+      %li= link_to "View Listing", current_user.company
+      %li= link_to "Edit Listing", edit_company_path(current_user.company)
     %li= link_to 'Settings', settings_path
     %li= link_to 'Logout', logout_path
   - else

@@ -5,6 +5,7 @@ class Ability
 
     can :read, :all
     cannot :read, Company, :approved => false
+    cannot :read, App
 
     user ||= User.new
 

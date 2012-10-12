@@ -22,11 +22,9 @@
         .company-desc
           = @company.description
         .actions
-          = link_to "Edit Company", edit_company_path(current_user.company), :class => 'edit-btn' if can? :update, @company
           = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn'
 
-  .inner
-    %h2 Apps
+  .company-apps.inner
     - if can? :update, @company => App
       = link_to "Add App", new_company_app_path(current_user.company)
 

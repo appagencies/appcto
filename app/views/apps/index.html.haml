@@ -1,12 +1,15 @@
-#content.inner
-  #apps
-    - @apps.each do |app|
-      .app
-        = link_to app.name, [app.company, app]
+.edit-listing.inner
+  %h1 Edit Apps
 
-        - if can? :update, app
-          = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
-          = link_to "Edit App", edit_company_app_path(app.company, app)
+  = render "shared/edit_nav"
 
-  - if can? :update, @company => App
-    = link_to "Add Aps", new_company_app_path
+  = form_for [@app.company, @app] do |f|
+    = render 'form', :f => f
+
+  - @apps.each do |app|
+    .app
+      = link_to app.name, [app.company, app]
+
+      - if can? :update, app
+        = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
+        = link_to "Edit App", edit_company_app_path(app.company, app)

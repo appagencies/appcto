@@ -24,7 +24,7 @@ class Company
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  attr_accessible :name, :budget, :description, :platform, :email, :website, :logo
+  attr_accessible :name, :budget, :description, :platform, :email, :website, :logo, :location_attributes
 
   slug :name
   validates :name, :presence => true
