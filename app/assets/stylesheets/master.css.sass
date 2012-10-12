@@ -47,7 +47,15 @@ body
       padding: 13px 0
       margin: 0 0 0 20px
       vertical-align: middle
-    a, a:visited
+    .logout a
+      background: image-url("logout-icon.png") no-repeat top left
+      height: 20px
+      text-indent: -99999px
+      width: 25px
+      display: inline-block
+      &:hover
+        background-position: 0 -20px
+    a
       text-decoration: none
       color: white
       font-size: 14px
@@ -215,25 +223,25 @@ body
     text-decoration: none
     color: $blue
 
+.card
+  border: 1px solid #c3c3c3
+  @include border-radius(4px)
+  @include box-shadow(inset 0 1px 0 #fff)
+  background: #fff image-url("listing-bg.png") repeat-x top left
+  margin: 10px
+  &.large
+    width: 458px
+    height: 458px
+  &.normal
+    height: 218px
+    width: 218px
+
 /* Companies */
 #companies
   @include clearfix
-
   .company
     float: left
-    border: 1px solid #c3c3c3
-    @include border-radius(4px)
-    @include box-shadow(inset 0 1px 0 #fff)
-    background: #fff image-url("listing-bg.png") repeat-x top left
-    margin: 10px
-
-  .company.pro
-    width: 458px
-    height: 458px
-
-  .company.free
-    height: 218px
-    width: 218px
+  .company.normal
     .company-name
       line-height: 16px
       a

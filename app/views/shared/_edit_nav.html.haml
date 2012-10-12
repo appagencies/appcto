@@ -1,3 +1,6 @@
 %nav
-  = link_to_unless_current "Edit Company", edit_company_path(current_user.company)
-  = link_to_unless_current "Edit Apps", company_apps_path(current_user.company)
+  %ul
+    %li{class: cp(edit_company_path(current_user.company))}
+      = link_to "Edit Company", edit_company_path(current_user.company)
+    %li{class: cp(company_apps_path(current_user.company))}
+      = link_to "Edit Apps", company_apps_path(current_user.company)

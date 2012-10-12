@@ -25,15 +25,11 @@
           = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn'
 
   .company-apps.inner
-    - if can? :update, @company => App
-      = link_to "Add App", new_company_app_path(current_user.company)
-
     - @apps.each do |app|
-      - if can? :update, @company => App
-        = link_to "Edit App", edit_company_app_path(current_user.company, app)
-      %p
-        %figure= image_tag app.icon_url if app.icon_url.present?
-      %p
-        %b= link_to app.name, app.link
-      %p
-        = app.description
+      .app.card.large
+        %p
+          %figure= image_tag app.icon_url if app.icon_url.present?
+        %p
+          %b= link_to app.name, app.link
+        %p
+          = app.description
