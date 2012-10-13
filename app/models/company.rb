@@ -2,8 +2,6 @@ class Company
   include Mongoid::Document
   include Mongoid::Slug
 
-  paginates_per 10
-
   field :name
   field :budget, type: Integer, default: 0
   field :description

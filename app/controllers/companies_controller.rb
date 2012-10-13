@@ -3,8 +3,8 @@ class CompaniesController < ApplicationController
   def index
     @platform = params[:platform] ||= []
 
-    @companies_a = Company.filter(params).sort_by(&:size).reverse
-    @companies = Kaminari.paginate_array(@companies_a).page(params[:page])
+    @companies = Company.filter(params).sort_by(&:size).reverse
+    @companies = Kaminari.paginate_array(@companies).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

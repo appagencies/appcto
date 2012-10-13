@@ -37,7 +37,7 @@
 
 #result_summary
   %p.inner
-    %b= @companies_a.count
+    %b= @companies.total_count
     - if params[:platform].present?
       %b= params[:platform].to_sentence(:words_connector => " / ", :two_words_connector => " / ", :last_word_connector => " / ").titleize
     developers from
