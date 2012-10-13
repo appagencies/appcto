@@ -96,6 +96,9 @@
   .company-apps
     @include clearfix
     .app
+      float: left
+      width: 458px
+      height: 458px
 
 // Edit Listing
 .edit-listing
@@ -109,9 +112,10 @@
       li
         a
           float: left
-          padding: 15px
+          padding: 10px 15px
           text-decoration: none
           color: #333
+          font-size: 14px
           text-shadow: 0 1px 0 #fff
           &:hover
             background: shade(#eee, 5%)
@@ -124,5 +128,22 @@
         background: $blue
         color: white
         text-shadow: 0 1px 0 rgba(0,0,0,.3)
+  .apps
+    @include clearfix
+  .card
+    float: left
+    width: 458px
+    height: 458px
+    padding: 20px
+  .new
+    label
+      display: none
+    #app_name
+      width: 400px
+    #app_description
+      height: 50px
+      width: 400px
+    #app_link
+      width: 400px
 
 

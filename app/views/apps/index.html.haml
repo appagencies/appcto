@@ -1,13 +1,14 @@
 .edit-listing.inner
   = render "shared/edit_nav"
 
-  = form_for [@app.company, @app] do |f|
-    = render 'form', :f => f
+  .apps
+    .new.card
+      = form_for [@app.company, @app] do |f|
+        = render 'form', :f => f
 
-  - @apps.each do |app|
-    .app
-      = link_to app.name, [app.company, app]
-
-      - if can? :update, app
-        = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
-        = link_to "Edit App", edit_company_app_path(app.company, app)
+    - @apps.each do |app|
+      .app.card
+        = link_to app.name, [app.company, app]
+        - if can? :update, app
+          = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
+          = link_to "Edit App", edit_company_app_path(app.company, app)

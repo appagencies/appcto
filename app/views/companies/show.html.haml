@@ -26,7 +26,7 @@
 
   .company-apps.inner
     - @apps.each do |app|
-      .app.card.large
+      .app.card
         %p
           %figure= image_tag app.icon_url if app.icon_url.present?
         %p

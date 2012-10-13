@@ -1,9 +1,11 @@
-.company.card.large
+.company.card{class: company.size}
   .company-content-wrapper
     %h1.company-name= link_to company.name, company
     .company-location= company.location.name
     .company-budget= budget_to_shortstring(company.budget)
-    - company.apps.cover.each do |app|
-      .apps
-        .app-name= link_to app.name, company_app_path(company, app)
-        .app-description= app.description
+    .company-apps
+      - company.apps.cover.each do |app|
+        .app
+          .app-name= link_to app.name, company_app_path(company, app)
+          .app-description= app.description
+          .app-screenshot

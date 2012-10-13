@@ -47,6 +47,27 @@ body
       vertical-align: middle
       color: white
       font-size: 14px
+    a
+      text-decoration: none
+      color: white
+      &:hover
+        color: shade(white, 10%)
+    .blue
+      background-color: $blue
+      padding: 5px 10px
+      text-shadow: 0 1px 0 rgba(0,0,0,.2)
+      @include border-radius(2px)
+      &:hover
+        color: white
+        background-color: $darkblue
+    .getlisted a
+      @extend .blue
+    .upgrade a
+      @extend .blue
+    .current
+      background: #252525
+      padding: 5px 10px
+      @include border-radius(2px)
     .logout a
       background: image-url("logout-icon.png") no-repeat top left
       height: 20px
@@ -55,25 +76,6 @@ body
       display: inline-block
       &:hover
         background-position: 0 -20px
-    .upgrade a
-      background: image-url("pro-icon.png") no-repeat top left
-      padding-left: 25px
-    .current
-      background: #222
-      padding: 5px 10px
-      @include border-radius(2px)
-    a
-      text-decoration: none
-      color: white
-      &:hover
-        color: shade(white, 10%)
-      &.getlisted
-        background: $blue
-        padding: 5px 10px
-        @include border-radius(2px)
-        &:hover
-          color: white
-          background: $darkblue
 
 /* Filter */
 #filter
@@ -241,19 +243,25 @@ body
   &.normal
     height: 218px
     width: 218px
+  &.small
+    width: 218px
+    height: 98px
 
 /* Companies */
 #companies
   @include clearfix
   .company
     float: left
-  .company.normal
-    .company-name
-      line-height: 16px
-      a
-        font-size: 16px
-    .company-location, .company-budget
-      font-size: 11px
+    position: relative
+    &.normal, &.small
+      .company-name
+        line-height: 16px
+        white-space: nowrap
+        overflow: hidden
+        a
+          font-size: 16px
+      .company-location, .company-budget
+        font-size: 12px
 
   .company-content-wrapper
     padding: 20px
@@ -277,10 +285,27 @@ body
     text-transform: uppercase
     font-style: italic
 
+  .company-apps
+    .app-name a
+      text-transform: uppercase
+      text-decoration: none
+      color: $black
+      font-weight: bold
+    .app-screenshot
+      height: 383px
+      width: 233px
+      position: absolute
+      bottom: 0
+      right: 20px
+      background: image-url("iphone-case.png") no-repeat
+      figure
+        height: 290px
+        width: 193px
+
 footer
   border-top: 1px solid #dadada
   @include clearfix
-  opacity: 0.5
+  opacity: .5
   @include transition(opacity, 0.5s)
   &:hover
     opacity: 1

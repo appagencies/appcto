@@ -25,6 +25,7 @@ class Company
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   attr_accessible :name, :budget, :description, :platform, :email, :website, :logo, :location_attributes
+  attr_accessor :size #display size of listing
 
   slug :name
   validates :name, :presence => true
@@ -38,6 +39,14 @@ class Company
   scope :by_budget,   ->(budget){ where(budget: budget) }
   scope :by_platform, ->(platform){ any_in(platform: platform) }
   scope :by_location, ->(location){ near('location.coordinates' => Geocoder.coordinates(location)) }
+
+  after_initialize do |d|
+    if d.apps?
+      @size = "large"
+    else
+      @size = "small"
+    end
+  end
 
   def is_approved?
     self.approved == true
