@@ -28,7 +28,6 @@ class AfterRegisterController < ApplicationController
       flash[:mixpanel_record] = "'Created App'"
       render_wizard @app
     end
-
   end
 
   def finish_wizard_path

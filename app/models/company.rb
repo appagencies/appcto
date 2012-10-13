@@ -42,9 +42,9 @@ class Company
 
   after_initialize do |d|
     if d.apps?
-      @size = "large"
+      @size = 2
     else
-      @size = "small"
+      @size = 1
     end
   end
 

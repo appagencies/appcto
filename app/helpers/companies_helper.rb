@@ -4,6 +4,8 @@ module CompaniesHelper
 
   PLATFORMS = %w[ios android blackberry windows]
 
+  SIZE = %w[small normal large]
+
   def budget_to_string(int)
     BUDGETS[int][:string]
   end
