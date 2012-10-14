@@ -22,7 +22,7 @@ class Company
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  attr_accessible :name, :budget, :description, :platform, :email, :website, :logo, :location_attributes
+  attr_accessible :name, :budget, :description, :platform, :email, :website, :logo, :logo_cache, :remove_logo, :location_attributes
   attr_accessor :size #display size of listing
 
   slug :name

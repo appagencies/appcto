@@ -298,7 +298,7 @@ figure.icon
   .company-location
     margin: 0 0 2px 0
   .company-budget
-    color: #888
+    color: #999
     margin: 0 0 2px 0
     text-transform: uppercase
     font-style: italic
@@ -310,9 +310,13 @@ figure.icon
       padding: 0
       li
         float: left
+        opacity: .5
         .icon
           float: left
           margin: 0 10px 0 0
+        &.active
+          opacity: 1
+
 
     .apps-content
       .app
@@ -320,11 +324,16 @@ figure.icon
         &.active
           display: block
 
-
     .app-name
       text-transform: uppercase
       color: $black
       font-weight: bold
+      width: 160px
+      margin: 0 0 5px 0
+    .app-description
+      color: #666
+      font-size: 12px
+      width: 160px
     .app-screenshot
       height: 383px
       width: 233px

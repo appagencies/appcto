@@ -15,5 +15,5 @@
         - company.apps.cover.each do |app|
           .app{id: "#{app.id}"}
             .app-name= app.name
-            .app-description= app.description
+            .app-description= simple_format h app.description
             .app-screenshot

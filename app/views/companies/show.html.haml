@@ -30,6 +30,10 @@
         %p
           %figure= image_tag app.icon_url if app.icon_url.present?
         %p
-          %b= link_to app.name, app.link
+          %b= app.name
         %p
           = app.description
+        %p
+          %b Screenshots:
+          - app.screenshots.each do |s|
+            = image_tag s.screenshot_url

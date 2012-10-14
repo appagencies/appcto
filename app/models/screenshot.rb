@@ -5,6 +5,6 @@ class Screenshot
 
   mount_uploader :screenshot, ScreenshotUploader
 
-  attr_accessible :screenshot, :screenshot_cache
+  attr_accessible :screenshot, :screenshot_cache, :remove_screenshot
 
 end

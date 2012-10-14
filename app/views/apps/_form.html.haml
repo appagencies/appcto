@@ -27,11 +27,15 @@
   = f.check_box :remove_icon
   Remove Icon
 
-%h3 Photo Gallery
+%h3 Screenshots
 .field
   = f.fields_for :screenshots do |s|
-    = s.file_field :screenshot
-    = s.hidden_field :screenshot_cache
+    - if s.object.new_record?
+      = s.file_field :screenshot
+      = s.hidden_field :screenshot_cache
+    - else
+      = image_tag s.object.screenshot_url
+      = s.check_box :_destroy
 
 .form-actions
   = f.submit
