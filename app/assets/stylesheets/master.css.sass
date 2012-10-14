@@ -233,7 +233,6 @@ figure.icon
     background: image-url("icon-mask.png") no-repeat top left
     z-index: 1
 
-
 /* Paginator */
 #paginator
   @include clearfix
@@ -317,7 +316,6 @@ figure.icon
         &.active
           opacity: 1
 
-
     .apps-content
       .app
         display: none
@@ -334,16 +332,38 @@ figure.icon
       color: #666
       font-size: 12px
       width: 160px
-    .app-screenshot
+    .app-screenshots
       height: 383px
       width: 233px
       position: absolute
       bottom: 0
       right: 20px
       background: image-url("iphone-case.png") no-repeat
-      figure
+      .nav
+        background: image-url("screenshot-nav.png") no-repeat
+        position: absolute
+        z-index: 4
+        height: 25px
+        width: 24px
+        overflow: hidden
+        bottom: 40%
+        cursor: pointer
+        &.prev
+          background-position: 0 0
+          left: 15px
+        &.next
+          background-position: 0 -25px
+          right: 15px
+      .app-screenshots-inner
         height: 290px
         width: 193px
+        position: absolute
+        bottom: 13px
+        left: 20px
+        overflow: hidden
+        img
+          height: 290px
+          width: 193px
 
 footer
   border-top: 1px solid #dadada

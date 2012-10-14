@@ -20,7 +20,18 @@ $ ->
   $('.app-icons li:first-child').addClass 'active'
   $('.apps-content .app:first-child').addClass 'active'
 
+  # Screenshots Cycle
+  $('.app-screenshots-inner').cycle
+    fx: 'scrollHorz'
+    speed: 'fast'
+    timeout: 0
+    pause: 1
+    next: '.next'
+    prev: '.prev'
 
-  #$('.apps-content').click (e) ->
-  #	e.preventDefault()
-  #	$(this).tab "show"
+  # Screenshot Cycle Nav Hover
+  $(".app-screenshots .nav").fadeTo 0, 0
+  $(".app-screenshots").hover (->
+    $(this).find(".nav").stop().fadeTo "normal", 1
+  ), ->
+    $(this).find(".nav").fadeTo "normal", 0

@@ -16,4 +16,9 @@
           .app{id: "#{app.id}"}
             .app-name= app.name
             .app-description= simple_format h app.description
-            .app-screenshot
+            .app-screenshots
+              %a.nav.prev
+              %a.nav.next
+              .app-screenshots-inner
+                - app.screenshots.each do |s|
+                  = image_tag s.screenshot_url
