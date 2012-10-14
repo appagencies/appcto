@@ -8,7 +8,9 @@
 
   %p
     %b Icon:
-    %figure= image_tag @app.icon_url if @app.icon_url.present?
+    %figure.icon
+      = image_tag @app.icon_url if @app.icon_url.present?
+      .mask
 
   %p
     %b Screenshots:

@@ -4,8 +4,16 @@
     .company-location= company.location.name
     .company-budget= budget_to_shortstring(company.budget)
     .company-apps
-      - company.apps.cover.each do |app|
-        .app
-          .app-name= link_to app.name, company_app_path(company, app)
-          .app-description= app.description
-          .app-screenshot
+      %ul.app-icons
+        - company.apps.cover.each do |app|
+          %li
+            = link_to "##{app.id}", "data-toggle" => "tab" do
+              %figure.icon
+                = image_tag app.icon_url if app.icon_url.present?
+                .mask
+      .apps-content
+        - company.apps.cover.each do |app|
+          .app{id: "#{app.id}"}
+            .app-name= app.name
+            .app-description= app.description
+            .app-screenshot

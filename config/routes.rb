@@ -17,7 +17,7 @@ Appcto::Application.routes.draw do
   resources :users
 
   resources :companies do
-    resources :apps
+    resources :apps, :except => :show
   end
 
   #### Static Pages

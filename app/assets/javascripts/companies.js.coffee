@@ -10,6 +10,17 @@ $ ->
     $(".flash-message").slideUp()
   setTimeout flashCallback, 3000
 
+  # Select2 DropDown
   $(".select-btn").select2 minimumResultsForSearch: 10, width: 'off'
 
+  # Platform Tooltips
   $('.platform-options li').tooltip placement: 'bottom'
+
+  # Apps Toggler
+  $('.app-icons li:first-child').addClass 'active'
+  $('.apps-content .app:first-child').addClass 'active'
+
+
+  #$('.apps-content').click (e) ->
+  #	e.preventDefault()
+  #	$(this).tab "show"
