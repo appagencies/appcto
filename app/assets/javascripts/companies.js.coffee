@@ -21,17 +21,20 @@ $ ->
   $('.apps-content .app:first-child').addClass 'active'
 
   # Screenshots Cycle
-  $('.app-screenshots-inner').cycle
-    fx: 'scrollHorz'
-    speed: 'fast'
-    timeout: 0
-    pause: 1
-    next: '.next'
-    prev: '.prev'
+  $('.app-screenshots-inner').each ->
+    p = @parentNode
+    $(@).cycle
+      fx: 'scrollHorz'
+      speed: 'fast'
+      timeout: 0
+      pause: 1
+      next: $(".prev", p)
+      prev: $(".next", p)
 
-  # Screenshot Cycle Nav Hover
-  $(".app-screenshots .nav").fadeTo 0, 0
-  $(".app-screenshots").hover (->
-    $(this).find(".nav").stop().fadeTo "normal", 1
-  ), ->
-    $(this).find(".nav").fadeTo "normal", 0
+    # Screenshot Cycle Nav Hover
+    $(".nav", p).hide() # Hide all navbars
+    if($(@).children().length > 1) # Only show navbars where there is more then 1 screenshot
+      $(p).hover (->
+        $(@).find(".nav").stop().fadeTo "normal", 1
+      ), ->
+        $(@).find(".nav").fadeTo "normal", 0
