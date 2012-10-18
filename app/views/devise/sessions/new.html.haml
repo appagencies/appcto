@@ -1,23 +1,16 @@
-.inner
-  %h2 Login
+#login.auth.inner
+  %h2 Login to App Agencies
 
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %div
+    %fieldset
       = f.label :email
-      %br
       = f.email_field :email
 
-    %div
+    %fieldset
       = f.label :password
-      %br
       = f.password_field :password
 
-    - if devise_mapping.rememberable?
-      %div
-        = f.check_box :remember_me
-        = f.label :remember_me
-
-    %div
+    %fieldset.actions
       = f.submit "Login"
 
   = render "devise/shared/links"

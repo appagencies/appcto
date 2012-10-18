@@ -1,16 +1,51 @@
-%cta
-  background: $red image-url("cta-icon.png") no-repeat 96% center
+@mixin cta($color)
+  background: $color image-url("cta-icon.png") no-repeat 96% center
   font: bold 16px "lucida grande", tahoma, verdana, arial, sans-serif
   color: #fff
-  border: 1px solid shade($red, 10%)
+  border: 1px solid shade($color, 10%)
   padding: 15px
   @include border-radius(3px)
-  text-shadow: 0 1px 0 shade($red, 30%)
+  text-shadow: 0 1px 0 shade($color, 30%)
+  width: 100%
   text-align: left
   &:hover, &:focus
-    background-color: shade($red, 10%)
+    background-color: shade($color, 10%)
   &:active
     @include box-shadow(inset 0 1px 2px rgba(0,0,0,.5))
+
+
+.auth
+  form
+    width: 400px
+    fieldset
+      margin: 0 0 10px 0
+      font-size: 14px
+      label
+        display: block
+        margin: 0 0 5px 0
+        font-weight: bold
+      input[type="text"],
+      input[type="password"],
+      input[type="url"],
+      input[type="email"]
+        width: 100%
+    .actions
+      margin: 0
+
+.auth-links
+  margin: 10px 0
+  ul
+    margin: 0
+    padding: 0
+    display: inline
+    li
+      display: inline-block
+      margin: 0 10px 0 0
+      a, a:visited
+        color: #999
+        text-decoration: none
+        &:hover
+          color: $blue
 
 #signup
   margin: 20px auto
@@ -25,21 +60,13 @@
     h2
       margin: 0 0 20px 0
       color: #999
-      font-weight: normal
+      font-weight: 300
+  .actions
+    input
+      @include cta($red)
 
-  form
-    width: 400px
-    fieldset
-      margin: 0 0 10px 0
-      font-size: 14px
-      label
-        display: block
-        margin: 0 0 5px 0
-        font-weight: bold
-      input
-        width: 100%
+#login
+  .actions
+    button
+      @include cta($blue)
 
-    .actions
-      margin: 0
-      input
-        @extend %cta
