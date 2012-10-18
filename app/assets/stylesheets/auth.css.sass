@@ -1,0 +1,45 @@
+%cta
+  background: $red image-url("cta-icon.png") no-repeat 96% center
+  font: bold 16px "lucida grande", tahoma, verdana, arial, sans-serif
+  color: #fff
+  border: 1px solid shade($red, 10%)
+  padding: 15px
+  @include border-radius(3px)
+  text-shadow: 0 1px 0 shade($red, 30%)
+  text-align: left
+  &:hover, &:focus
+    background-color: shade($red, 10%)
+  &:active
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.5))
+
+#signup
+  margin: 20px auto
+  min-height: 500px
+  hgroup
+    margin: 20px 0
+    h1
+      margin: 0 0 0 0
+      em
+        font-style: normal
+        color: $blue
+    h2
+      margin: 0 0 20px 0
+      color: #999
+      font-weight: normal
+
+  form
+    width: 400px
+    fieldset
+      margin: 0 0 10px 0
+      font-size: 14px
+      label
+        display: block
+        margin: 0 0 5px 0
+        font-weight: bold
+      input
+        width: 100%
+
+    .actions
+      margin: 0
+      input
+        @extend %cta

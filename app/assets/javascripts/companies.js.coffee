@@ -38,3 +38,10 @@ $ ->
         $(@).find(".nav").stop().fadeTo "normal", 1
       ), ->
         $(@).find(".nav").fadeTo "normal", 0
+
+  # Back To Top display
+  $(window).scroll ->
+    unless $(this).scrollTop() is 0
+      $(".backtotop").fadeIn()
+    else
+      $(".backtotop").fadeOut()
