@@ -10,13 +10,9 @@
   = f.label :name
   = f.text_field :name
 
-.field.radio
+.field
   = f.label :budget
-  %ul
-    - CompaniesHelper::BUDGETS.each do |budget|
-      %li
-        = f.radio_button :budget, budget[:id]
-        = f.label :budget, budget[:string], :value => budget[:id]
+  = f.select :budget, CompaniesHelper::BUDGETS.map {|budget| [budget[:string],budget[:id]]}
 
 .field
   = f.label :description
@@ -48,9 +44,6 @@
   = image_tag @company.logo_url if @company.logo?
   = f.file_field :logo
   = f.hidden_field :logo_cache
-
-  = f.check_box :remove_logo
-  Remove Logo
 
 .form-actions
   = f.submit
