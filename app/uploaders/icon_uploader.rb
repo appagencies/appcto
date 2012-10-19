@@ -22,7 +22,7 @@ class IconUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    #For Rails 3.1+ asset pipeline compatibility:
+    # For Rails 3.1+ asset pipeline compatibility:
     asset_path("fallback/" + [version_name, "default-app-icon.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
@@ -30,6 +30,7 @@ class IconUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   process :resize_to_fill => [60, 60]
+  process :convert => :jpg
   # process :scale => [200, 300]
   #
   # def scale(width, height)

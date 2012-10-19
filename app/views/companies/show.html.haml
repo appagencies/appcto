@@ -1,4 +1,4 @@
-.company-profile
+.company-profile{:itemscope => true, :itemtype => "http://schema.org/Organization"}
   %header
     .inner
       - unless !@company.is_approved?
@@ -6,23 +6,23 @@
           Your company isn't publicly visible yet while pending approval.
     .company-info
       .inner
-        %figure.company-logo= image_tag @company.logo_url if @company.logo_url.present?
-        %h1.company-name= @company.name
+        %figure.company-logo{:itemprop => "image"}= image_tag @company.logo_url if @company.logo_url.present?
+        %h1.company-name{:itemprop => "name"}= @company.name
         .company-platform
           - @company.platform.each do |platform|
             %i{class: platform}= platform
         .company-location
-          %span Located in
-          = link_to @company.location.name, companies_path(:location => @company.location.name)
+          %span.label Located in
+          %span{:itemprop => "location"}= link_to @company.location.name, companies_path(:location => @company.location.name)
         .company-budget
-          %span Average fee
+          %span.label Average fee
           = budget_to_string(@company.budget)
         .company-website
-          = link_to @company.website, @company.website, :target => "_blank"
+          = link_to @company.website, @company.website, :target => "_blank", :itemprop => "url"
         .company-desc
           = @company.description
         .actions
-          = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn'
+          = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn', :itemprop => "email"
 
   .company-apps.inner
     - @apps.each do |app|
