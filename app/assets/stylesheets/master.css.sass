@@ -94,77 +94,100 @@ body
     margin: 0 0 5px 0
 
 /* Filter Platforms */
-.platform-options
-  @include clearfix
-  margin: 0
-  padding: 0
-  list-style: none
-  li
-    float: left
-    position: relative
-    width: 50px
-    height: 50px
+#platforms
+  .platform-options
+    @include clearfix
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      float: left
+      position: relative
+      width: 50px
+      height: 50px
+      border: 1px solid #e0e0e0
+      border-bottom: 1px solid #c5c5c5
+      margin: 0 0 0 -1px
+      cursor: pointer
+      position: relative
+      @include linear-gradient(#fcfcfc, #ededed)
+      label, input[type="checkbox"]
+        display: none
+      &:hover
+        border-color: #a6a6a6
+        z-index: 1
+      &:active
+        @include box-shadow(inset 0 2px 6px rgba(0,0,0,.1))
+      &.active
+        background: #fff
+        border-color: #a6a6a6
+        @include box-shadow(inset 0 2px 6px rgba(0,0,0,.1))
+        z-index: 1
+      .icon
+        position: absolute
+        background: image-url("platform-icons.png") no-repeat
+
+    li.windows .icon
+      top: 14px
+      left: 12px
+      height: 23px
+      width: 26px
+      background-position: 0 0
+    li.windows.active .icon
+      background-position: 100% 0
+    li.android .icon
+      top: 12px
+      left: 14px
+      height: 25px
+      width: 22px
+      background-position: 0 -25px
+    li.android.active .icon
+      background-position: 100% -25px
+    li.ios .icon
+      top: 11px
+      left: 15px
+      height: 25px
+      width: 21px
+      background-position: 0 -52px
+    li.ios.active .icon
+      background-position: 100% -52px
+    li.blackberry .icon
+      top: 14px
+      left: 12px
+      height: 23px
+      width: 27px
+      background-position: 0 -79px
+    li.blackberry.active .icon
+      background-position: 100% -79px
+    li:first-child
+      @include border-radius(4px 0 0 4px)
+    li:last-child
+      @include border-radius(0 4px 4px 0)
+
+#location
+  input
     border: 1px solid #e0e0e0
     border-bottom: 1px solid #c5c5c5
-    margin: 0 0 0 -1px
-    cursor: pointer
-    position: relative
-    @include linear-gradient(#fcfcfc, #ededed)
-    label, input[type="checkbox"]
-      display: none
-    &:hover
+    font-size: 17px
+    font-weight: bold
+    color: #373737
+    padding: 15px 20px 15px 45px
+    @include border-radius(4px)
+    @include box-shadow(inset 0 1px 4px rgba(0,0,0,.05))
+    background: #fcfcfc image-url("filter-location-icon.png") no-repeat 15px center
+    &:focus
       border-color: #a6a6a6
-      z-index: 1
-    &:active
-      @include box-shadow(inset 0 2px 6px rgba(0,0,0,.1))
-    &.active
-      background: #fff
-      border-color: #a6a6a6
-      @include box-shadow(inset 0 2px 6px rgba(0,0,0,.1))
-      z-index: 1
-    .icon
-      position: absolute
-      background: image-url("platform-icons.png") no-repeat
+      outline: 0
 
-  li.windows .icon
-    top: 14px
-    left: 12px
-    height: 23px
-    width: 26px
-    background-position: 0 0
-  li.windows.active .icon
-    background-position: 100% 0
-  li.android .icon
-    top: 12px
-    left: 14px
-    height: 25px
-    width: 22px
-    background-position: 0 -25px
-  li.android.active .icon
-    background-position: 100% -25px
-  li.ios .icon
-    top: 11px
-    left: 15px
-    height: 25px
-    width: 21px
-    background-position: 0 -52px
-  li.ios.active .icon
-    background-position: 100% -52px
-  li.blackberry .icon
-    top: 14px
-    left: 12px
-    height: 23px
-    width: 27px
-    background-position: 0 -79px
-  li.blackberry.active .icon
-    background-position: 100% -79px
-  li:first-child
-    @include border-radius(4px 0 0 4px)
-  li:last-child
-    @include border-radius(0 4px 4px 0)
+#filter
+  .actions
+    margin-top: 44px
+    input
+      @include cta($blue)
+      height: 50px
 
 .budget-options select
-  width: auto
+  width: 200px
 
 #result_summary
   border-bottom: 1px solid #e1e1e1

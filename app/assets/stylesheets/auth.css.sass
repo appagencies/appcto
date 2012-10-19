@@ -1,20 +1,24 @@
 @mixin cta($color)
-  background: $color image-url("cta-icon.png") no-repeat 96% center
+  background: $color
   font: bold 16px "lucida grande", tahoma, verdana, arial, sans-serif
   color: #fff
   border: 1px solid shade($color, 10%)
   padding: 15px
   @include border-radius(3px)
   text-shadow: 0 1px 0 shade($color, 30%)
-  width: 100%
   text-align: left
   &:hover, &:focus
     background-color: shade($color, 10%)
   &:active
     @include box-shadow(inset 0 1px 2px rgba(0,0,0,.5))
 
+%cta-icon
+  background-image: image-url("cta-icon.png")
+  background-repeat: no-repeat
+  background-position: 96% center
 
 .auth
+  min-height: 500px
   form
     width: 400px
     fieldset
@@ -33,7 +37,7 @@
       margin: 0
 
 .auth-links
-  margin: 10px 0
+  margin: 20px 0
   ul
     margin: 0
     padding: 0
@@ -49,7 +53,6 @@
 
 #signup
   margin: 20px auto
-  min-height: 500px
   hgroup
     margin: 20px 0
     h1
@@ -64,9 +67,13 @@
   .actions
     input
       @include cta($red)
+      @extend %cta-icon
+      width: 100%
 
 #login
   .actions
-    button
+    input
       @include cta($blue)
+      @extend %cta-icon
+      width: 100%
 
