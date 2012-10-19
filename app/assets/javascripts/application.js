@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require modernizr-2.5.3.min
-//= require select2
 //= require bootstrap
 //= require jquery.cycle.all
 //= require_tree .

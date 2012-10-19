@@ -8,15 +8,15 @@
       .inner
         %figure.company-logo= image_tag @company.logo_url if @company.logo_url.present?
         %h1.company-name= @company.name
+        .company-platform
+          - @company.platform.each do |platform|
+            %i{class: platform}= platform
         .company-location
           %span Located in
           = link_to @company.location.name, companies_path(:location => @company.location.name)
         .company-budget
           %span Average fee
           = budget_to_string(@company.budget)
-        .company-platform
-          %span We build
-          = @company.platform.to_sentence
         .company-website
           = link_to @company.website, @company.website, :target => "_blank"
         .company-desc
