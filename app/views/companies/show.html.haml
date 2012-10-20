@@ -13,26 +13,26 @@
             %i{class: platform}= platform
         .company-location
           %span.label Located in
-          %span{:itemprop => "location"}= link_to @company.location.name, companies_path(:location => @company.location.name)
+          %b{:itemprop => "location"}= link_to @company.location.name, companies_path(:location => @company.location.name)
         .company-budget
           %span.label Average fee
           = budget_to_string(@company.budget)
         .company-website
           = link_to @company.website, @company.website, :target => "_blank", :itemprop => "url"
-        .company-desc
-          = @company.description
+        .company-desc{:itemprop => "description"}
+          = simple_format h @company.description
         .actions
           = mail_to @company.email, "Hire Us", :encode => "hex", :class => 'hire-btn', :itemprop => "email"
 
-  .company-apps.inner
+  .company-apps-list.inner
     - @apps.each do |app|
-      .app.card
-        %p
-          %figure= image_tag app.icon_url if app.icon_url.present?
-        %p
-          %b= app.name
-        %p
-          = app.description
-        %p
+      .app{:itemscope => true, :itemtype => "http://schema.org/MobileApplication"}
+        .app-txt
+          %figure.app-icon{:itemprop => "image"}
+            = image_tag app.icon_url if app.icon_url.present?
+            .mask
+          %h2.app-name{:itemprop => "name"}= link_to app.name, app.link
+          .app-description{:itemprop => "description"}= simple_format h app.description
+        .app-screenshots
           - app.screenshots.each do |s|
-            = image_tag s.screenshot_url
+            = image_tag s.screenshot_url, :itemprop => "screenshot"

@@ -3,6 +3,7 @@ body
   font-size: 13px
   background: #fcfcfc
   min-width: 1000px
+  color: $black
 
 /* Base Style */
 
@@ -238,7 +239,7 @@ body
 #content
   margin: 10px auto
 
-figure.icon
+figure.app-icon
   position: relative
   height: 60px
   width: 60px
@@ -330,10 +331,11 @@ figure.icon
       @include clearfix
       margin: 10px 0
       padding: 0
+      list-style: none
       li
         float: left
         opacity: .5
-        .icon
+        .app-icon
           float: left
           margin: 0 10px 0 0
         &.active
@@ -365,7 +367,7 @@ figure.icon
       .nav
         background: image-url("screenshot-nav.png") no-repeat
         position: absolute
-        z-index: 4
+        z-index: 999
         height: 25px
         width: 24px
         overflow: hidden

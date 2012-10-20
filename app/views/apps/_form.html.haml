@@ -20,22 +20,24 @@
 
 .field
   = f.label :icon
-  = image_tag @app.icon_url if @app.icon?
+  %figure.app-icon
+    = image_tag @app.icon_url if @app.icon_url.present?
+    .mask
   = f.file_field :icon
   = f.hidden_field :icon_cache
 
-  = f.check_box :remove_icon
-  Remove Icon
-
-%h3 Screenshots
-.field
+.field.screenshots
+  %h3 Screenshots
   = f.fields_for :screenshots do |s|
     - if s.object.new_record?
-      = s.file_field :screenshot
-      = s.hidden_field :screenshot_cache
+      .screenshot.new
+        = s.file_field :screenshot
+        = s.hidden_field :screenshot_cache
     - else
-      = image_tag s.object.screenshot_url
-      = s.check_box :_destroy
+      .screenshot
+        = image_tag s.object.screenshot_url
+        = s.link_to_remove "Remove", :title => "Remove Screenshot"
+  = f.link_to_add "Add screenshot", :screenshots
 
 .form-actions
   = f.submit

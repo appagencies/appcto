@@ -8,7 +8,7 @@
         - company.apps.cover.each do |app|
           %li
             = link_to "##{app.id}", "data-toggle" => "tab" do
-              %figure.icon
+              %figure.app-icon
                 = image_tag app.icon_url if app.icon_url.present?
                 .mask
       .apps-content

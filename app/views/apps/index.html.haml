@@ -1,14 +1,22 @@
 .edit-listing.inner
   = render "shared/edit_nav"
 
-  .apps
-    .new.card
-      = form_for [@app.company, @app] do |f|
-        = render 'form', :f => f
+  .company-apps-list
+    /.new
+    //= nested_form_for [@app.company, @app] do |f|
+    /= render 'form', :f => f
 
     - @apps.each do |app|
-      .app.card
-        %h1= app.name
-        - if can? :update, app
-          = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
-          = link_to "Edit App", edit_company_app_path(app.company, app)
+      .app
+        .app-txt
+          %figure.app-icon
+            = image_tag app.icon_url if app.icon_url.present?
+            .mask
+          %h2.app-name= link_to app.name, app.link
+          .app-description= simple_format h app.description
+          - if can? :update, app
+            = link_to "Delete App", [app.company, app], :confirm => 'Are you sure?', :method => :delete
+            = link_to "Edit App", edit_company_app_path(app.company, app)
+        .app-screenshots
+          - app.screenshots.each do |s|
+            = image_tag s.screenshot_url

@@ -23,6 +23,8 @@ gem 'mini_magick'
 
 gem 'jquery-rails'
 
+gem 'nested_form'
+
 gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
 
 gem 'wicked'

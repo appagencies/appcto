@@ -8,33 +8,38 @@
     border: 1px solid #debb80
 
   header
-    border-bottom: 1px solid #e1e1e1
-    padding: 10px 0
+    border-bottom: 1px solid #e5e5e5
+    padding: 20px 0
+    background: #fff image-url("listing-bg.png") repeat-x top left
+    text-align: left
     .company-info
       .inner
         position: relative
         @include clearfix
     .company-logo
       float: left
+      display: block
       height: 180px
       width: 180px
       line-height: 180px
       text-align: center
-      margin: 0 10px 0 0
+      margin: 0 20px 0 0
       img
         vertical-align: middle
         max-height: 180px
         max-width: 180px
+        @include border-radius(3px)
     .company-name
       margin: 0
       font-size: 36px
       display: inline
+      color: $black
     .company-budget
-      margin: 0 0 2px 0
+      margin: 0 0 3px 0
       color: #999
       font-size: 14px
     .company-location
-      margin: 0 0 2px 0
+      margin: 0 0 3px 0
       color: #999
       font-size: 14px
       .label
@@ -50,8 +55,6 @@
         color: $blue
         font-size: 14px
         text-decoration: none
-        background: image-url("newwindow-icon.png") no-repeat right center
-        padding-right: 12px
     .company-platform
       display: inline
       color: #999
@@ -76,16 +79,18 @@
           background-position: -60px 0
 
     .company-desc
-      margin-top: 10px
+      margin: 10px 0
+      line-height: 20px
       width: 50%
-      padding-left: 192px
+      margin-left: 200px
     .actions
       position: absolute
-      right: 0
+      right: 10px
       bottom: 0
       .hire-btn
         background: $blue image-url("hire-icon.png") no-repeat 20px center
         padding-left: 45px
+        font-size: 14px
       .edit-btn
         background: #999 image-url("edit-icon.png") no-repeat 20px center
         padding-left: 45px
@@ -104,16 +109,41 @@
         &:active
           @include box-shadow(inset 0 1px 2px rgba(0,0,0,.5))
 
-  .company-apps
-    @include clearfix
-    .app
+.company-apps-list
+  @include clearfix
+  .app
+    margin: 20px 0
+    border: 1px solid #c3c3c3
+    @include border-radius(4px)
+    background: #fff
+    .app-txt
+      padding: 20px
+      @include clearfix
+    .app-icon
       float: left
-      width: 458px
-      height: 458px
+    .app-name
+      margin: 0 0 0 80px
+      font-size: 24px
+      a
+        text-decoration: none
+    .app-description
+      margin: 0 0 0 80px
+      p
+        margin: 0
+    .app-screenshots
+      @include clearfix
+      padding: 20px 0 0 20px
+      border-top: 1px solid #e5e5e5
+      background: #f5f5f5
+      @include border-radius(0 0 4px 4px)
+      img
+        border: 1px solid #fff
+        margin: 0 20px 20px 0
+        @include box-shadow(0 3px 5px rgba(0,0,0,.2))
 
 // Edit Listing
 .edit-listing
-  margin: 10px auto
+  margin: 20px auto
   nav
     margin: 0 0 10px 0
     background: #eee
@@ -158,5 +188,49 @@
       width: 400px
     #app_link
       width: 400px
+
+  .screenshots
+    @include clearfix
+    background: #f7f7f7
+    padding: 20px
+    @include border-radius(3px)
+    h3
+      color: #474747
+      margin: 0 0 10px 0
+    .add_nested_fields
+      clear: both
+      display: block
+
+  .screenshots
+    .screenshot
+      float: left
+      margin-right: 10px
+      position: relative
+      background: #fff
+      height: 290px
+      width: 193px
+      border: 1px solid #fff
+      @include box-shadow(0 3px 5px rgba(0,0,0,.2))
+      overflow: hidden
+      margin: 0 10px 10px 0
+      &.new
+        background: #fff image-url("add-screenshot-bg.png") no-repeat center 80px
+        input
+          position: absolute
+          bottom: 100px
+          left: 10px
+      .remove_nested_fields
+        position: absolute
+        height: 25px
+        width: 24px
+        top: 5px
+        overflow: hidden
+        right: 5px
+        text-indent: -999px
+        background: $blue image-url("remove-image-icon.png") no-repeat 0 0
+        @include border-radius(2px)
+        &:active
+          background-color: #fff
+          background-position: 0 -25px
 
 

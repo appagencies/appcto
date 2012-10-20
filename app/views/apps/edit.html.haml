@@ -1,7 +1,7 @@
 .edit-listing.inner
   %h1 Edit Listing: Apps
 
-  = form_for [@app.company, @app], :html => {:multipart => true} do |f|
+  = nested_form_for [@app.company, @app], :html => {:multipart => true} do |f|
     = render 'form', :f => f
 
   %h3 Delete App

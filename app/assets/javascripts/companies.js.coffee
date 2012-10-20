@@ -27,8 +27,8 @@ $ ->
       speed: 'fast'
       timeout: 0
       pause: 1
-      next: $(".prev", p)
-      prev: $(".next", p)
+      next: $(".next", p)
+      prev: $(".prev", p)
 
     # Screenshot Cycle Nav Hover
     $(".nav", p).hide() # Hide all navbars
@@ -44,3 +44,13 @@ $ ->
       $(".backtotop").fadeIn()
     else
       $(".backtotop").fadeOut()
+
+  # Show Remove on Hover
+  $(".remove_nested_fields").hide() # Hide all remove-links
+
+  $(".screenshots .fields").hover (->
+    $(@).children(".remove_nested_fields").stop().fadeTo "normal", 1
+  ), ->
+    $(@).children(".remove_nested_fields").fadeTo "normal", 0
+
+

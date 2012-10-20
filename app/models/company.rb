@@ -29,6 +29,7 @@ class Company
   validates :name, :presence => true
   validates :name, :length => { :maximum => 100 }, :uniqueness => { :case_sensitive => false }
   validates :email, format: { with: VALID_EMAIL_REGEX }, :allow_blank => true
+  validates :description, length: { maximum: 500 }
 
   accepts_nested_attributes_for :location, :apps
 
