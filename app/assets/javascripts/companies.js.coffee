@@ -45,6 +45,9 @@ $ ->
     else
       $(".backtotop").fadeOut()
 
+  # Select2
+  $(".select-btn").select2 minimumResultsForSearch: 10, width: 'resolve'
+
   # Show Remove on Hover
   $(".remove_nested_fields").hide() # Hide all remove-links
 

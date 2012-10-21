@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require modernizr-2.5.3.min
 //= require bootstrap
+//= require select2
 //= require jquery.cycle.all
 //= require jquery_nested_form
 //= require_tree .

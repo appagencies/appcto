@@ -199,13 +199,18 @@ body
     color: #666
 
 /* Custom Select2 Skin */
+
+#filter_budget
+  width: 200px
+
 .select2-container .select2-choice
   color: #373737
   font: bold 16px Helvetica, Arial, sans-serif
-  height: auto
+  height: 50px
+  line-height: 50px
   border-color: #e0e0e0
   border-bottom: 1px solid #c5c5c5
-  padding: 15px 20px
+  padding: 0 20px
   @include linear-gradient(#fcfcfc, #ededed)
 
 .select2-container .select2-choice div
@@ -213,6 +218,10 @@ body
   border: 0
   width: 10px
   margin: 0 20px
+
+.select2-container-active .select2-choice
+  @include box-shadow(none)
+  border-color: #a6a6a6
 
 .select2-container .select2-choice div b
   background: image-url("select2/select-arrow.png") no-repeat left center
@@ -225,7 +234,7 @@ body
 
 .select2-drop
   @include box-shadow(none)
-  border-color: #ddd
+  border-color: #a6a6a6
 
 .select2-results
   font-size: 16px

@@ -30,7 +30,7 @@
       .filter#budget
         %label Budget
         .budget-options
-          = select_tag "filter_budget", options_for_select(CompaniesHelper::BUDGETS.map { |budget| [budget[:string], budget[:id]]}, (params[:budget].to_i unless params[:budget].blank?)), :prompt => 'Any Budget', :class => "select-btn", :name => "budget"
+          = select_tag "filter_budget", options_for_select([["Any Budget", ""], ["Below $5,000", "0"], ["$5,000 - $15,000", "1"], ["$15,000 - $50,000", "2"],["Over $50,000", "3"]], (params[:budget].blank? ? nil : params[:budget].to_i)), :class => "select-btn", :name => "budget"
 
       .filter.actions
         = submit_tag "Filter", :name => nil
