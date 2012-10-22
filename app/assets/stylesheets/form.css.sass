@@ -37,8 +37,10 @@ input[type="submit"]
   width: 150px
   cursor: pointer
   &:hover
-    border: 1px solid #a6a6a6
+    background: shade(#eee,5%)
   &:active
+    border: 1px solid #a6a6a6
+    background: shade(#eee,10%)
 
 /* Errors */
 
@@ -87,6 +89,7 @@ input[type="submit"]
     width: 20%
     margin: 4px 0 5px 0
     font-weight: bold
+    color: #778089
 
   &.radio ul
     margin: 5px 0 0 20%
@@ -103,7 +106,7 @@ input[type="submit"]
         margin: 0
 
 .form-actions
-  margin: 0 0 10px 20%
+  margin: 20px
   padding: 0
   input
     @include action-btn

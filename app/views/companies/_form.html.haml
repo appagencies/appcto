@@ -11,8 +11,29 @@
   = f.text_field :name
 
 .field
+  = f.label :logo
+  = image_tag @company.logo_url if @company.logo?
+  = f.file_field :logo
+  = f.hidden_field :logo_cache
+
+.field
+  = f.fields_for :location do |l|
+    = l.label :name, "Location"
+    = l.text_field :name
+
+.field
   = f.label :budget
   = f.select :budget, CompaniesHelper::BUDGETS.map {|budget| [budget[:string],budget[:id]]}
+
+.field.radio.edit-platform
+  = f.label :platform
+  %ul
+    - CompaniesHelper::PLATFORMS.each do |value|
+      %li{class: value}
+        = check_box_tag "company_platform_#{value}", value, @company.platform.include?(value), :name => "company[platform][]"
+        = label_tag "company_platform_#{value}" do
+          %i
+          = value.capitalize
 
 .field
   = f.label :description
@@ -25,25 +46,6 @@
 .field
   = f.label :email, "Contact Email"
   = f.email_field :email
-
-.field.radio
-  = f.label :platform
-  %ul
-    - CompaniesHelper::PLATFORMS.each do |value|
-      %li
-        = check_box_tag "company_platform_#{value}", value, @company.platform.include?(value), :name => "company[platform][]"
-        = label_tag "company_platform_#{value}", value
-
-.field
-  = f.fields_for :location do |l|
-    = l.label :name, "Location"
-    = l.text_field :name
-
-.field
-  = f.label :logo
-  = image_tag @company.logo_url if @company.logo?
-  = f.file_field :logo
-  = f.hidden_field :logo_cache
 
 .form-actions
   = f.submit
