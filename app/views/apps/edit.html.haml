@@ -3,6 +3,8 @@
     Edit Listing: Apps:
     = @app.name
 
-  .app
+  .app.edit
     = nested_form_for [@app.company, @app], :html => {:multipart => true} do |f|
       = render 'form', :f => f
+
+    .app-delete= link_to "Delete App", company_app_path(@app.company), :data => { :confirm => "Are you sure?" }, :method => :delete

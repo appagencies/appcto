@@ -10,8 +10,6 @@ $ ->
     $(".flash-message").slideUp()
   setTimeout flashCallback, 3000
 
-  # Select2 DropDown
-
   # Platform Tooltips
   $('.platform-options li').tooltip placement: 'bottom'
 
@@ -51,9 +49,15 @@ $ ->
   # Show Remove on Hover
   $(".remove_nested_fields").hide() # Hide all remove-links
 
-  $(".screenshots .fields").hover (->
-    $(@).children(".remove_nested_fields").stop().fadeTo "normal", 1
+  $(".app-screenshots .fields").hover (->
+    $(@).find(".remove_nested_fields").stop().fadeTo "normal", 1
   ), ->
-    $(@).children(".remove_nested_fields").fadeTo "normal", 0
+    $(@).find(".remove_nested_fields").fadeTo "normal", 0
 
+  # Edit Apps Tabs
+  $(".apps-nav a").click (e) ->
+    e.preventDefault()
+    $(this).tab "show"
+  $('.app-show.new').addClass 'active'
+  $('.apps-nav .new').addClass 'active'
 

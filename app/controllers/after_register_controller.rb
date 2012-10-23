@@ -10,7 +10,11 @@ class AfterRegisterController < ApplicationController
     when :add_company
       @company = @user.build_company(:email => current_user.email, :website => ("http://" + current_user.email.split("@").last), :platform => ["ios","android","blackberry","windows"])
     when :add_apps
+      @company = current_user.company
+      @apps = @company.apps.all
+
       @app = @user.company.apps.build
+      @app.screenshots.build
     when :successful
       UserMailer.signup_confirmation(current_user).deliver
     end

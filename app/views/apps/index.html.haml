@@ -5,11 +5,11 @@
     .apps-nav
       %ul
         %li.new
-          %a
+          %a{href: "#newapp"}
             %figure.app-icon
               = image_tag "add-icon.png"
             .app-name Add app
-        - @apps.each do |app|
+        - @apps.reverse_each do |app|
           %li
             %a{href: "##{app.id}"}
               %figure.app-icon
@@ -17,20 +17,12 @@
                 .mask
               .app-name= app.name
 
-    /.new
-    //= nested_form_for [@app.company, @app] do |f|
-    /= render 'form', :f => f
+    .app-show.new#newapp
+      = nested_form_for [@app.company, @app] do |f|
+        = render 'form', :f => f
 
     - @apps.each do |app|
-      .app{id: app.id}
-        .app-txt
-          %figure.app-icon
-            = image_tag app.icon_url if app.icon_url.present?
-            .mask
-          %h2.app-name= link_to app.name, app.link
-          .app-description= simple_format h app.description
-          - if can? :update, app
-            = link_to "Edit App", edit_company_app_path(app.company, app)
-        .app-screenshots
-          - app.screenshots.each do |s|
-            .screenshot= image_tag s.screenshot_url
+      .app-show.edit{id: app.id}
+        = nested_form_for [app.company, app], :remote => true do |f|
+          = render 'form', :f => f
+        .app-delete= link_to "Delete App", [app.company, app], :data => { :confirm => "Are you sure?" }, :method => :delete
