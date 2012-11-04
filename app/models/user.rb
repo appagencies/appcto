@@ -3,6 +3,7 @@ class User
 
   attr_accessible :email, :password, :remember_me, :company_attributes, :role
   has_one :company, autosave: true, dependent: :destroy
+  has_one :subscription
   accepts_nested_attributes_for :company
 
   # Include default devise modules. Others available are:
@@ -52,6 +53,14 @@ class User
 
   def email_domain
     "http://" + self.split("@").last
+  end
+
+  def status
+    if self.subscription.present?
+      return "pro"
+    else
+      return "free"
+    end
   end
 
 end

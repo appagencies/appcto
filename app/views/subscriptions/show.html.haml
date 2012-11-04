@@ -1,0 +1,7 @@
+.inner
+  = render "shared/account_nav"
+
+  %h1 Your subscription
+  %p
+    You are currently on the Pro plan.
+    = link_to "Cancel my subscription", subscription_path(@subscription), :data => { :confirm => "Are you sure?" }, :method => :delete

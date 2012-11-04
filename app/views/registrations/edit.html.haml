@@ -1,4 +1,6 @@
 .account.inner
+  = render "shared/account_nav"
+
   .edit-user
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
       = devise_error_messages!

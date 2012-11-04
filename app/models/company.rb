@@ -1,5 +1,6 @@
 class Company
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
   include Mongoid::Slug
 
   field :name
@@ -39,16 +40,23 @@ class Company
   scope :by_platform, ->(platform){ any_in(platform: platform) }
   scope :by_location, ->(location){ near('location.coordinates' => Geocoder.coordinates(location)) }
 
-  after_initialize do |d|
-    if d.apps?
-      @size = 2
-    else
+  after_initialize :set_size
+
+  def set_size
+    self.user ||= User.new
+    if self.user.status == "pro"
       @size = 1
+    else
+      @size = 0
     end
   end
 
   def is_approved?
     self.approved == true
+  end
+
+  def is_new?
+    self.created_at >= Time.zone.now - 4.weeks
   end
 
   private

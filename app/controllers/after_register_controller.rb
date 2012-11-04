@@ -2,19 +2,20 @@ class AfterRegisterController < ApplicationController
   include Wicked::Wizard
   before_filter :authenticate_user!
 
-  steps :add_company, :add_apps, :successful
+  steps :add_company, :add_apps, :choose_plan, :successful
 
   def show
     @user = current_user
     case step
     when :add_company
-      @company = @user.build_company(:email => current_user.email, :website => ("http://" + current_user.email.split("@").last), :platform => ["ios","android","blackberry","windows"])
+      @company = @user.company || @user.build_company(:email => @user.email, :website => ("http://" + @user.email.split("@").last), :platform => %w[ios android blackberry windows])
     when :add_apps
-      @company = current_user.company
+      @company = @user.company
       @apps = @company.apps.all
-
       @app = @user.company.apps.build
       @app.screenshots.build
+    when :choose_plan
+
     when :successful
       UserMailer.signup_confirmation(current_user).deliver
     end
@@ -32,6 +33,7 @@ class AfterRegisterController < ApplicationController
       @app = @user.company.apps.create!(params[:app])
       flash[:mixpanel_record] = "'Created App'"
       render_wizard @app
+    when :choose_plan
     end
   end
 

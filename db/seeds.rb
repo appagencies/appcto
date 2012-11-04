@@ -9,7 +9,7 @@ require 'json'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Create admin
+# Creating Admin
 puts 'Creating admin...'
 user = User.create! :email => 'user@admin.com', :password => 'please', :role => 'admin'
 puts 'Admin created: ' << user.email

@@ -7,7 +7,7 @@ Appcto::Application.routes.draw do
     get "getlisted" => "registrations#new"
     get "login" => "devise/sessions#new"
     get "logout" => "devise/sessions#destroy"
-    get "settings" => "registrations#edit"
+    get "settings/account" => "registrations#edit"
   end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -25,6 +25,11 @@ Appcto::Application.routes.draw do
   match 'about' => 'about#about'
   match 'legal/privacy' => 'about#privacy'
   match 'legal/terms' => 'about#terms'
+
+  # Payment Page
+
+  resources :subscriptions
+  get 'paypal/checkout' => 'subscriptions#paypal_checkout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

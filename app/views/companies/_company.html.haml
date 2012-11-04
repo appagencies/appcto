@@ -1,4 +1,4 @@
-.company.card{class: CompaniesHelper::SIZE[company.size]}
+.company.card{class: (CompaniesHelper::SIZE[company.size]) + (company.is_new? ? ' new' : '')}
   .company-content-wrapper
     %h1.company-name= link_to company.name, company
     .company-location= company.location.name
