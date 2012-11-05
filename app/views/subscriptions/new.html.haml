@@ -1,26 +1,29 @@
 .inner
+  = render "shared/account_nav"
+
   %h1
     Upgrade to Pro
   %p
     For only 99$/month
 
-  = form_for @subscription do |f|
-    - if @subscription.errors.any?
-      .error_messages
-        %h2
-          = pluralize(@subscription.errors.count, "error")
-          prohibited this subscription from being saved:
-        %ul
-          - @subscription.errors.full_messages.each do |msg|
-            %li= msg
+  #upgrade-box
+    = form_for @subscription do |f|
+      - if @subscription.errors.any?
+        .error_messages
+          %h2
+            = pluralize(@subscription.errors.count, "error")
+            prohibited this subscription from being saved:
+          %ul
+            - @subscription.errors.full_messages.each do |msg|
+              %li= msg
 
-    = f.hidden_field :paypal_customer_token
-    = f.hidden_field :paypal_payment_token
+      = f.hidden_field :paypal_customer_token
+      = f.hidden_field :paypal_payment_token
 
-    - unless @subscription.payment_provided?
-      #paypal_checkout
-        = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), paypal_checkout_path
-    - if @subscription.payment_provided?
-      Payment has been provided. Click "Upgrade Now" to complete your payment.
+      - unless @subscription.payment_provided?
+        #paypal_checkout
+          = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), paypal_checkout_path
+      - if @subscription.payment_provided?
+        Payment has been provided. Click "Upgrade Now" to complete your payment.
 
-    = f.submit "Upgrade Now"
+      = f.submit "Upgrade Now"

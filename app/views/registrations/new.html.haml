@@ -3,16 +3,17 @@
     %h1 Increase your <em>online visibility.</em><br /> Start <em>getting work!</em>
     %h2 It's free and takes only a couple of minutes.
 
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
+  #signup-box.box
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = devise_error_messages!
 
-    %fieldset
-      = f.label :email
-      = f.email_field :email
+      %fieldset
+        = f.label :email
+        = f.email_field :email
 
-    %fieldset
-      = f.label :password, "New Password"
-      = f.password_field :password
+      %fieldset
+        = f.label :password, "New Password"
+        = f.password_field :password
 
-    %fieldset.actions
-      = f.submit "Create Your Listing"
+      %fieldset.actions
+        = f.submit "Create Your Listing"
