@@ -29,6 +29,7 @@ Appcto::Application.routes.draw do
   # Payment Page
 
   resources :subscriptions
+  get "subscriptions/confirm" => 'subscriptions#confirm'
   get 'paypal/checkout' => 'subscriptions#paypal_checkout'
 
   # The priority is based upon order of creation:

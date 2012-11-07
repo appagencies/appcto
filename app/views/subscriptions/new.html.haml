@@ -1,10 +1,14 @@
-.inner
+#upgrade.inner
   = render "shared/account_nav"
 
   %h1
     Upgrade to Pro
   %p
     For only 99$/month
+
+    Your listing will appear above the free listings
+    Your listing is 4 Times larger
+    Showcase up to 3 Apps
 
   #upgrade-box
     = form_for @subscription do |f|
@@ -24,6 +28,10 @@
         #paypal_checkout
           = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), paypal_checkout_path
       - if @subscription.payment_provided?
-        Payment has been provided. Click "Upgrade Now" to complete your payment.
+        Payment has been provided. Hold on while processing your payment...
+        :javascript
+          $("#new_subscription").submit()
 
-      = f.submit "Upgrade Now"
+        %noscript
+          Click "Upgrade Now" to complete your payment.
+          = f.submit "Upgrade Now"

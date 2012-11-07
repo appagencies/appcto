@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @subscription = current_user.build_subscription
     if params[:PayerID]
@@ -24,7 +26,7 @@ class SubscriptionsController < ApplicationController
     subscription = current_user.build_subscription
     redirect_to subscription.paypal.checkout_url(
       return_url: new_subscription_url,
-      cancel_url: root_url
+      cancel_url: new_subscription_url
     )
   end
 
