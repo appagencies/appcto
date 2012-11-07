@@ -1,17 +1,16 @@
 #login.auth.inner
   .center-wrap
-    %h1 <span>Login</span> to AppAgencies
+    %h1 <span>Log in</span> to AppAgencies
     #login-box
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         %fieldset
           = f.label :email
-          = f.email_field :email
+          = f.email_field :email, placeholder: "your@email.com"
 
         %fieldset
           = f.label :password
           = f.password_field :password
 
         %fieldset.actions
-          = f.submit "Login"
-
-      = render "devise/shared/links"
+          = render "devise/shared/links"
+          = f.submit "Log In"
