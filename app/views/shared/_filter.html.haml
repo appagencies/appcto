@@ -1,5 +1,9 @@
 #filter
   .inner
+    - unless params[:platform].present? || params[:location].present? || params[:budget].present?
+      .tagline
+        %h1
+          Find the perfect <strong>Mobile App Developer</strong>
     %form{:action => companies_path, :method => "get"}
       .filter#platforms
         %label Platform
@@ -40,7 +44,7 @@
     %b= @companies.total_count
     - if params[:platform].present?
       %b= params[:platform].to_sentence(:words_connector => " / ", :two_words_connector => " / ", :last_word_connector => " / ").titleize
-    developers from
+    = "#{pluralize(@companies.total_count, 'developer').gsub(/^\d+\s/, "")} from"
     - if params[:location].present?
       %b= Geocoder.search(params[:location])[0].address
     - else

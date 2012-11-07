@@ -37,7 +37,7 @@
       margin: 0
 
 .auth-links
-  margin: 20px 0 0 0
+  margin: 10px 0 0 0
   ul
     margin: 0
     padding: 0
@@ -70,7 +70,22 @@
       @extend %cta-icon
       width: 100%
 
+#signup-box, #login-box
+  @extend %box
+
 #login
+  padding-top: 60px
+  h1
+    span
+      font-family: 'BloklettersViltstift'
+      font-size: 22px
+
+  .center-wrap
+    text-align: center
+
+  #login-box
+    display: inline-block
+    text-align: left
   .actions
     input
       @include cta($blue)
