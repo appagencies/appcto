@@ -1,21 +1,22 @@
 .edit-listing.inner
 
   .company-apps-list
-    .apps-nav
-      %ul
-        %li.new
-          %a{href: "#newapp"}
-            %figure.app-icon
-              = image_tag "add-icon.png"
-            .app-name Add App
-        - @apps.reverse_each do |app|
-          %li
-            %a{href: "##{app.id}"}
+    .left-column
+      .apps-nav
+        %ul
+          %li.new
+            %a{href: "#newapp"}
               %figure.app-icon
-                = image_tag app.icon_url if app.icon_url.present?
-                .mask
-              .app-name= app.name
-      .skip= link_to 'Skip for now →', next_wizard_path
+                = image_tag "add-icon.png"
+              .app-name Add App
+          - @apps.reverse_each do |app|
+            %li
+              %a{href: "##{app.id}"}
+                %figure.app-icon
+                  = image_tag app.icon_url if app.icon_url.present?
+                  .mask
+                .app-name= app.name
+      .skip= link_to 'Skip for now', next_wizard_path
 
     .app-show.new#newapp
       = nested_form_for @app, :url => wizard_path, :method => :put do |f|

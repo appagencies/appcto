@@ -2,7 +2,9 @@ class AfterRegisterController < ApplicationController
   include Wicked::Wizard
   before_filter :authenticate_user!
 
-  steps :add_company, :add_apps, :choose_plan, :successful
+  layout 'auth'
+
+  steps :add_company, :add_apps, :upgrade, :successful
 
   def show
     @user = current_user
@@ -14,7 +16,7 @@ class AfterRegisterController < ApplicationController
       @apps = @company.apps.all
       @app = @user.company.apps.build
       @app.screenshots.build
-    when :choose_plan
+    when :upgrade
 
     when :successful
       UserMailer.signup_confirmation(current_user).deliver
@@ -33,7 +35,7 @@ class AfterRegisterController < ApplicationController
       @app = @user.company.apps.create!(params[:app])
       flash[:mixpanel_record] = "'Created App'"
       render_wizard @app
-    when :choose_plan
+    when :upgrade
     end
   end
 

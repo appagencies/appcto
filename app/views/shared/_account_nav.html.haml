@@ -7,8 +7,8 @@
         %li{class: cp(new_subscription_path)}
           = link_to "Upgrade!", new_subscription_path
       - else
-        %li{class: cp(subscription_path(current_user.subscription))}
-          = link_to "Pro", subscription_path(current_user.subscription)
+        %li{class: cp(settings_pro_path)}
+          = link_to "Pro", settings_pro_path
     - else
       %li{class: cp(new_subscription_path)}
         = link_to "Upgrade!", new_subscription_path

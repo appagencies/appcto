@@ -18,6 +18,7 @@ gem 'wicked'
 gem 'rails_admin'
 gem 'kaminari'
 gem 'paypal-recurring'
+gem 'paymill', :require => 'paymill'
 
 group :development, :test do
   gem 'hirb'

@@ -28,8 +28,12 @@ Appcto::Application.routes.draw do
 
   # Payment Page
 
-  resources :subscriptions
+  match "settings" => redirect("/settings/account")
+  get "settings/pro" => "subscriptions#show"
+
+  resources :subscriptions, :path => "pro"
   get 'paypal/checkout' => 'subscriptions#paypal_checkout'
+  match 'paypal/notify' => 'subscriptions#notify'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

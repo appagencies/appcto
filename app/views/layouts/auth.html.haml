@@ -1,0 +1,30 @@
+!!! 5
+%html
+  %head
+    %title= content_for?(:title) ? content_for(:title) + " - AppAgencies" : "AppAgencies"
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width"}
+    = favicon_link_tag
+
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #wrapper
+      = render "shared/flashmsg"
+
+      %header#header
+        .inner
+          %h1.logo
+            = link_to "App Agencies", root_path
+          %nav
+            %ul
+              %li
+                Email us, we'd love to assist:
+                = mail_to "contact@appagencies.com"
+
+
+      #main{:role => "main"}
+        = yield
+
+    = render "shared/analytics"

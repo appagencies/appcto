@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
 
-  attr_accessible :email, :password, :remember_me, :company_attributes, :role
+  attr_accessible :email, :password, :remember_me, :company_attributes, :role, :pro
   has_one :company, autosave: true, dependent: :destroy
   has_one :subscription
   accepts_nested_attributes_for :company
@@ -47,20 +47,13 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
 
-  field :role, :type => String, :default => "company"
+  field :role, type: String, default: "company"
+  field :pro, type: Boolean, default: false
 
   ROLES = %w[admin company]
 
   def email_domain
     "http://" + self.split("@").last
-  end
-
-  def status
-    if self.subscription.present?
-      return "pro"
-    else
-      return "free"
-    end
   end
 
 end

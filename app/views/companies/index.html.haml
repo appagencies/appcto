@@ -1,3 +1,4 @@
+- title "Find the perfect Mobile App Developer"
 = render "shared/filter"
 
 #content.inner
@@ -7,4 +8,4 @@
         = render 'company', :company => company
 
   #paginator
-    = link_to_next_page @companies, 'Show More Companies', :params => params, :remote => true, :disable_with => "Loading..."
+    = link_to_next_page @companies, 'Show More Companies', :params => params, :remote => true, :disable_with => "<img src='assets/loadmore-spinner.gif' /> Loading..."

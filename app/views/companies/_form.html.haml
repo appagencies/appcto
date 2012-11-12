@@ -11,12 +11,6 @@
   = f.text_field :name
 
 .field
-  = f.label :logo
-  = image_tag @company.logo_url if @company.logo?
-  = f.file_field :logo
-  = f.hidden_field :logo_cache
-
-.field
   = f.fields_for :location do |l|
     = l.label :name, "Location"
     = l.text_field :name
@@ -38,6 +32,12 @@
 .field
   = f.label :description
   = f.text_area :description
+
+.field
+  = f.label :logo
+  = image_tag @company.logo_url if @company.logo?
+  = f.file_field :logo
+  = f.hidden_field :logo_cache
 
 .field
   = f.label :website
