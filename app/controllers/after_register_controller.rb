@@ -13,10 +13,12 @@ class AfterRegisterController < ApplicationController
       @company = @user.company || @user.build_company(:email => @user.email, :website => ("http://" + @user.email.split("@").last), :platform => %w[ios android blackberry windows])
     when :add_apps
       @company = @user.company
-      @apps = @company.apps.all
+      @apps = @company.apps
       @app = @user.company.apps.build
       @app.screenshots.build
     when :upgrade
+      @company = @user.company
+      @apps = @company.apps
 
     when :successful
       UserMailer.signup_confirmation(current_user).deliver
@@ -29,11 +31,10 @@ class AfterRegisterController < ApplicationController
     case step
     when :add_company
       @company = @user.create_company(params[:company])
-      flash[:mixpanel_record] = "'Created Company'"
       render_wizard @company
+
     when :add_apps
-      @app = @user.company.apps.create!(params[:app])
-      flash[:mixpanel_record] = "'Created App'"
+      @app = @user.company.apps.create(params[:app])
       render_wizard @app
     when :upgrade
     end

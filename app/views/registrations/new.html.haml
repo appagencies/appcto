@@ -1,7 +1,37 @@
 - title "Create your listing"
+
+#signup-steps
+  .inner
+    %ol
+      %li.step.current
+        %span.bullet
+          1
+        %span.label
+          Create Account
+      %li.step
+        %span.bullet
+          2
+        %span.label
+          Company Details
+      %li.step
+        %span.bullet
+          3
+        %span.label
+          Apps Details
+      %li.step
+        %span.bullet
+          4
+        %span.label
+          Upgrade
+      %li.step
+        %span.bullet
+          5
+        %span.label
+          Publish
+
 #signup.auth.inner
   %hgroup
-    %h1 Increase your <em class="accentuate">online visibility.</em><br /> Start <em class="accentuate">getting work!</em>
+    %h1 Increase your <em class="accentuate">online visibility.</em> Start <em class="accentuate">getting work.</em>
     %h2 It's free and takes only a couple of minutes.
 
   #signup-box.box
@@ -17,4 +47,4 @@
         = f.password_field :password
 
       %fieldset.actions
-        = f.submit "Create Your Listing"
+        = f.submit "Continue to Company Details"

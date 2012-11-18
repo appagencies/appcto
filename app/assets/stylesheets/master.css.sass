@@ -336,37 +336,16 @@ figure.app-icon
     height: 98px
 
 /* Companies */
-#companies
-  @include clearfix
-  .company
-    float: left
-    position: relative
-    &.normal, &.small
-      .company-name
-        line-height: 16px
-        white-space: nowrap
-        overflow: hidden
-        a
-          font-size: 16px
-      .company-location, .company-budget
-        font-size: 12px
-    &.new
-      &:after
-        content: ""
-        display: block
-        position: absolute
-        background: image-url("new-listing.png") no-repeat right top
-        height: 108px
-        width: 109px
-        top: -1px
-        right: -1px
-
+.company.card
+  float: left
+  text-align: left
+  position: relative
   .company-content-wrapper
     padding: 20px
-
   .company-name
+    white-space: nowrap
+    overflow: hidden
     margin: 0 0 5px 0
-    line-height: 26px
     a
       color: $blue
       text-decoration: none
@@ -382,8 +361,8 @@ figure.app-icon
     margin: 0 0 2px 0
     text-transform: uppercase
     font-style: italic
-
   .company-apps
+    @include clearfix
     .app-icons
       @include clearfix
       margin: 10px 0
@@ -396,14 +375,12 @@ figure.app-icon
           float: left
           margin: 0 10px 0 0
         &.active
-          opacity: 1
-
+          opacity: .99
     .apps-content
       .app
         display: none
         &.active
           display: block
-
     .app-name
       text-transform: uppercase
       color: $black
@@ -414,38 +391,78 @@ figure.app-icon
       color: #666
       font-size: 12px
       width: 160px
-    .app-screenshots
-      height: 383px
-      width: 233px
-      position: absolute
-      bottom: 0
-      right: 20px
-      background: image-url("phone-mask.png") no-repeat
-      .nav
-        background: image-url("screenshot-nav.png") no-repeat
+      p
+        margin: 0
+
+  /* Normal Size */
+  &.normal, &.small
+    .company-name
+      line-height: 16px
+      a
+        font-size: 16px
+    .company-location, .company-budget
+      font-size: 12px
+
+    .app-icons
+      float: left
+
+    .apps-content
+      float: left
+      margin: 10px 0
+      .app-name, .app-description
+        width: 100px
+
+  /* Large Size */
+  &.large
+    .company-name
+      line-height: 30px
+    .company-apps
+      .app-screenshots
+        height: 383px
+        width: 233px
         position: absolute
-        z-index: 999
-        height: 25px
-        width: 24px
-        overflow: hidden
-        bottom: 40%
-        cursor: pointer
-        &.prev
-          background-position: 0 0
-          left: 15px
-        &.next
-          background-position: 0 -25px
-          right: 15px
-      .app-screenshots-inner
-        height: 290px
-        width: 193px
-        position: absolute
-        bottom: 13px
-        left: 20px
-        overflow: hidden
-        img
+        bottom: 0
+        right: 20px
+        background: image-url("phone-mask.png") no-repeat
+        .nav
+          background: image-url("screenshot-nav.png") no-repeat
+          position: absolute
+          z-index: 999
+          height: 25px
+          width: 24px
+          overflow: hidden
+          bottom: 40%
+          cursor: pointer
+          &.prev
+            background-position: 0 0
+            left: 15px
+          &.next
+            background-position: 0 -25px
+            right: 15px
+        .app-screenshots-inner
           height: 290px
           width: 193px
+          position: absolute
+          bottom: 13px
+          left: 20px
+          overflow: hidden
+          img
+            height: 290px
+            width: 193px
+
+  &.new
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      background: image-url("new-listing.png") no-repeat right top
+      height: 108px
+      width: 109px
+      top: -1px
+      right: -1px
+
+#companies
+  @include clearfix
 
 footer
   border-top: 1px solid #dadada

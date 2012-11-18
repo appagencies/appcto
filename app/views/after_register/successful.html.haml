@@ -1,3 +1,28 @@
+#signup-steps
+  .inner
+    %ol
+      %li.step.previous
+        %span.bullet
+          1
+        %span.label
+          Create Account
+      %li.step.previous
+        = link_to wizard_path(:add_company) do
+          %span.bullet
+            2
+          %span.label
+            Company Details
+      %li.step.previous
+        %span.bullet
+          3
+        %span.label
+          Apps Details
+      %li.step.previous
+        %span.bullet
+          4
+        %span.label
+          Publish
+
 .inner
   %h2 Thanks for listing yourself on App Agencies
 

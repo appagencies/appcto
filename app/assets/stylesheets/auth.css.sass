@@ -55,6 +55,7 @@
 
 #signup
   margin: 20px auto
+  text-align: center
   hgroup
     margin: 20px 0
     h1
@@ -71,6 +72,9 @@
       @include cta($red)
       @extend %cta-icon
       width: 100%
+  #signup-box
+    display: inline-block
+    text-align: left
 
 #signup-box, #login-box
   padding: 40px
@@ -99,3 +103,39 @@
       float: right
       text-align: center
 
+#signup-steps
+  border-bottom: 1px solid #e1e1e1
+  text-align: center
+  padding: 14px 0 10px 0
+  ol
+    list-style: none
+    display: inline-block
+    margin: 0
+    @include clearfix
+    .step
+      float: left
+      margin-right: 20px
+      font-size: 14px
+      .bullet
+        background: #ccc
+        height: 30px
+        line-height: 30px
+        text-align: center
+        color: #fff
+        width: 30px
+        display: inline-block
+        border-radius: 15px
+      .label
+        color: #ccc
+
+    .step.current
+      .bullet
+        background: $blue
+      .label
+        color: $blue
+    .step.previous
+      .bullet
+        background: #87c87a image-url("step-complete-icon.png") no-repeat center center
+        text-indent: -9999px
+      .label
+        color: #999
