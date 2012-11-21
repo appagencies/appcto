@@ -1,14 +1,43 @@
 #plans
   text-align: center
-  margin-bottom: 20px
-  .instructions
-    margin: 20px 0
+  margin: 20px auto
   .plan
     display: inline-block
-    h1
-      margin: 0
+    .description
+      h1
+        margin: 0 0 10px 0
+        span
+          font-size: 18px
+    .select-plan
       span
-        font-size: 18px
-    .select-plan a
-      @include action-btn
-      padding: 10px 20px
+        font-size: 11px
+        display: block
+        font-style: italic
+      a
+        @include action-btn
+        padding: 10px 20px
+
+  .plan.large
+    position: relative
+    .select-plan
+      a
+        background-image: image-url("paypal-cta-icon.png")
+        background-repeat: no-repeat
+        background-position: 20px center
+        padding-left: 50px
+
+    .advantages
+      position: absolute
+      left: -460px
+      bottom: 60px
+      list-style: none
+      display: inline-block
+      margin: 0
+      padding-right: 50px
+      text-align: right
+      font-size: 14px
+      font-weight: bold
+      background: image-url("arrow-upwards.png") no-repeat top right
+      li
+        margin: 0 0 12px 0
+        font-size: 16px

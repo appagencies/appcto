@@ -1,17 +1,3 @@
-GIT
-  remote: git://github.com/alexreisner/geocoder.git
-  revision: c6698ec90629bafae3929d2bec11885c14c0382b
-  specs:
-    geocoder (1.1.4)
-
-GIT
-  remote: git://github.com/digitalplaywright/mongoid-slug.git
-  revision: 6c93390c392881e25c0c16c6a0b939127fe76d2e
-  specs:
-    mongoid_slug (0.20.0.rc1)
-      mongoid (~> 3.0)
-      stringex (~> 1.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,6 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.1.0)
     bourbon (2.1.1)
@@ -70,6 +57,9 @@ GEM
     carrierwave-mongoid (0.1.0)
       carrierwave
       mongoid
+    cloudinary (1.0.42)
+      aws_cf_signer
+      rest-client
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -91,6 +81,7 @@ GEM
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    geocoder (1.1.5)
     haml (3.1.7)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -125,14 +116,15 @@ GEM
       moped (~> 1.1)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    mongoid_slug (2.0.1)
+      mongoid (~> 3.0)
+      stringex (~> 1.4)
     moped (1.2.1)
     multi_json (1.3.7)
     nested_form (0.2.3)
     nokogiri (1.5.5)
     origin (1.0.8)
     orm_adapter (0.4.0)
-    paymill (0.0.3)
-      json
     paypal-recurring (1.1.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -178,6 +170,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     ruby2ruby (1.3.1)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
@@ -221,19 +215,19 @@ DEPENDENCIES
   cancan
   carrierwave
   carrierwave-mongoid
+  cloudinary
   coffee-rails (~> 3.2.1)
   devise
   faker
-  geocoder!
+  geocoder
   haml-rails
   hirb
   jquery-rails
   kaminari
   mini_magick
   mongoid (~> 3.0.5)
-  mongoid_slug!
+  mongoid_slug
   nested_form
-  paymill
   paypal-recurring
   rails (= 3.2.8)
   rails_admin

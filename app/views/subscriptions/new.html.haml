@@ -2,13 +2,46 @@
   = render "shared/account_nav"
 
   %h1
-    Upgrade to Pro
+    Upgrade to a Pro Listing
   %p
-    For only 99$/month
+    For only $99/month
 
     Your listing will appear above the free listings
     Your listing is 4 Times larger
     Showcase up to 3 Apps
+
+  .plan.large
+    .description
+      .select-plan
+        = link_to "Select Pro Listing", paypal_checkout_path
+        %span
+          You can cancel anytime.
+
+    .company.card.large
+      .company-content-wrapper
+        %h1.company-name= link_to @company.name, "#"
+        .company-location= @company.location.name
+        .company-budget= budget_to_shortstring(@company.budget)
+        .company-apps
+          %ul.app-icons
+            - @company.apps.cover.each do |app|
+              %li
+                = link_to "##{app.id}", "data-toggle" => "tab" do
+                  %figure.app-icon
+                    = image_tag app.icon_url if app.icon_url.present?
+                    .mask
+
+          .apps-content
+            - @company.apps.cover.each do |app|
+              .app{id: "#{app.id}"}
+                .app-name= app.name
+                .app-description= simple_format h app.description
+                .app-screenshots
+                  %a.nav.prev
+                  %a.nav.next
+                  .app-screenshots-inner
+                    - app.screenshots.each do |s|
+                      = image_tag s.screenshot_url
 
   #upgrade-box
     = form_for @subscription do |f|

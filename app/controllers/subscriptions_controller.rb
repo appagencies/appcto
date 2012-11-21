@@ -11,6 +11,8 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = current_user.build_subscription
+    @company = current_user.company
+    @apps = @company.apps
     if params[:PayerID]
       @subscription.paypal_customer_token = params[:PayerID]
       @subscription.paypal_payment_token = params[:token]

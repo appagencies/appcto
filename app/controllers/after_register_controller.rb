@@ -13,7 +13,7 @@ class AfterRegisterController < ApplicationController
       @company = @user.company || @user.build_company(:email => @user.email, :website => ("http://" + @user.email.split("@").last), :platform => %w[ios android blackberry windows])
     when :add_apps
       @company = @user.company
-      @apps = @company.apps
+      @apps = @company.apps.all
       @app = @user.company.apps.build
       @app.screenshots.build
     when :upgrade

@@ -15,10 +15,11 @@
           %span.label
             Company Details
       %li.step.previous
-        %span.bullet
-          3
-        %span.label
-          Apps Details
+        = link_to wizard_path(:add_apps) do
+          %span.bullet
+            3
+          %span.label
+            Apps Details
       %li.step.current
         %span.bullet
           4
@@ -26,10 +27,14 @@
           Publish
 
 #plans.inner
-  .instructions
-    Choose to upgrade
   .plan
-    %h1 Free
+    .description
+      %h1 Free Listing
+      .select-plan
+        = link_to "Select Free Listing", next_wizard_path
+        %span
+          You can always upgrade later.
+
     .company.card.normal
       .company-content-wrapper
         %h1.company-name= link_to @company.name, "#"
@@ -48,11 +53,15 @@
               .app
                 .app-name= app.name
                 .app-description= simple_format h app.description
-    .select-plan
-      = link_to "Select Free", next_wizard_path
 
-  .plan
-    %h1 Pro <span>($99/m)</span>
+  .plan.large
+    .description
+      %h1 Pro Listing <span>($99/month)</span>
+      .select-plan
+        = link_to "Select Pro Listing", paypal_checkout_path
+        %span
+          You can cancel anytime.
+
     .company.card.large
       .company-content-wrapper
         %h1.company-name= link_to @company.name, "#"
@@ -78,5 +87,11 @@
                   .app-screenshots-inner
                     - app.screenshots.each do |s|
                       = image_tag s.screenshot_url
-    .select-plan
-      = link_to "Select Pro", new_subscription_path
+
+      %ul.advantages
+        %li.accentuate
+          4 Times larger listing
+        %li.accentuate
+          Showcase up to 3 Apps
+        %li.accentuate
+          Always appear above the free listings

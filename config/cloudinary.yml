@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hrmnjw1iq
+  api_key: '369541935741289'
+  api_secret: fH9SxI220z8mFhN1acsUNmKOx28
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hrmnjw1iq
+  api_key: '369541935741289'
+  api_secret: fH9SxI220z8mFhN1acsUNmKOx28
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hrmnjw1iq
+  api_key: '369541935741289'
+  api_secret: fH9SxI220z8mFhN1acsUNmKOx28
+  enhance_image_tag: true
+  static_image_support: false
