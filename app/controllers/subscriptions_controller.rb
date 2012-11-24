@@ -1,11 +1,14 @@
 class SubscriptionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:notify]
   protect_from_forgery :except => [:notify]
 
   def notify
-    @subscription = Subscription.find_by(paypal_customer_token: params[:PayerID])
-    notify = @subscription.paypal.checkout_details
-    p notify
+    txn_type = params[:txn_type]
+    case txn_type
+    when 'recurring_payment_profile_cancel', 'recurring_payment_failed', 'recurring_payment_expired'
+      @subscription = Subscription.find_by(paypal_customer_token: params[:payer_id])
+      @subscription.destroy
+    end
     render :nothing => true
   end
 

@@ -28,7 +28,8 @@ private
       payer_id: @subscription.paypal_customer_token,
       description: "Pro - Subscription",
       amount: "99.00",
-      currency: "USD"
+      currency: "USD",
+      ipn_url: 'http://5476.localtunnel.com/paypal/notify'
     )
     response = PayPal::Recurring.new(options).send(action)
     raise response.errors.inspect if response.errors.present?
