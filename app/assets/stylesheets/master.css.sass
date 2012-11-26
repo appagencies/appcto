@@ -69,22 +69,18 @@ a, a:visited
       color: white
       &:hover
         color: shade(white, 10%)
-    .blue
-      background-color: $blue
-      padding: 5px 10px
-      text-shadow: 0 1px 0 rgba(0,0,0,.2)
-      border-radius: 2px
-      &:hover
-        color: white
-        background-color: $darkblue
-    .getlisted a
-      @extend .blue
-    .upgrade a
-      @extend .blue
+    .attention
+      @extend .animated, .fadeIn
+      a
+        background-color: $blue
+        padding: 5px 10px
+        text-shadow: 0 1px 0 rgba(0,0,0,.2)
+        border-radius: 2px
+        &:hover
+          color: white
+          background-color: $darkblue
     .current
-      background: #252525
-      padding: 5px 10px
-      border-radius: 2px
+      font-weight: bold
     .logout a
       background: cloudinary-url("logout-icon.png") no-repeat top left
       height: 20px
@@ -218,6 +214,7 @@ a, a:visited
     input
       @include cta($blue)
       height: 50px
+      padding: 0 30px
 
 .budget-options select
   width: 200px
@@ -523,3 +520,4 @@ footer
 
 #upgrade
   margin: 20px auto
+  @include clearfix

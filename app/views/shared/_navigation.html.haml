@@ -1,9 +1,9 @@
 %ul
   - if user_signed_in?
     -if !current_user.company
-      %li.getlisted= link_to "+ Add your company", after_register_path(:add_company), :class => "getlisted notice"
+      %li.attention= link_to "+ Add your company", after_register_path(:add_company), :class => "getlisted notice"
     -else
-      %li.upgrade= link_to "Upgrade!", new_subscription_path unless current_user.subscription?
+      %li.attention= link_to "Upgrade!", new_subscription_path unless current_user.subscription?
       %li{class: cp(current_user.company)}= link_to_unless_current "View Listing", current_user.company
       %li{class: cp(edit_company_path(current_user.company)) || cp(company_apps_path(current_user.company))}= link_to_unless_current "Edit Listing", edit_company_path(current_user.company)
     %li{class: cp(settings_account_path)}= link_to_unless_current 'Settings', settings_account_path
@@ -11,4 +11,4 @@
   - else
     %li{class: cp(about_path)}= link_to 'About', about_path
     %li{class: cp(login_path)}= link_to 'Login', login_path
-    %li.getlisted= link_to 'Developer? Get Listed Now!', getlisted_path
+    %li.attention= link_to 'Developer? Get Listed Now!', getlisted_path

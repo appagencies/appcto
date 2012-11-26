@@ -6,17 +6,14 @@
   %p
     For only $99/month
 
+  %p
     Your listing will appear above the free listings
+    %br
     Your listing is 4 Times larger
+    %br
     Showcase up to 3 Apps
 
   .plan.large
-    .description
-      .select-plan
-        = link_to "Select Pro Listing", paypal_checkout_path
-        %span
-          You can cancel anytime.
-
     .company.card.large
       .company-content-wrapper
         %h1.company-name= link_to @company.name, "#"

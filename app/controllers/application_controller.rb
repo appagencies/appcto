@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_by_resource
-    devise_controller? ? "auth" : "application"
+    is_a?(Devise::SessionsController) ? "auth" : "application"
   end
 end

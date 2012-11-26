@@ -25,8 +25,8 @@ input[type="submit"]
   cursor: pointer
 
 @mixin action-btn
-  border-radius: 3px
   @include transition(all .2s)
+  border-radius: 3px
   border: 0
   padding: 0 20px
   font-size: 16px
@@ -85,22 +85,32 @@ input[type="submit"]
 
 /* Form General Style */
 .field
-  margin: 0 0 10px 0
-  padding: 0 0 10px 0
+  margin: 0
+  padding: 10px
   font-size: 14px
+  border-bottom: 1px solid #eee
   label
-    float: left
+    display: inline-block
     width: 20%
-    margin: 4px 0 5px 0
+    margin: 0
     font-weight: bold
+    line-height: 38px
     color: #778089
+  i
+    display: block
+    font-size: 13px
+    padding-left: 20%
+    margin-top: 5px
+    color: #666
 
   &.radio ul
-    margin: 5px 0 0 20%
+    margin: 0
     padding: 0
     list-style: none
+    display: inline-block
     li
-      margin: 0 0 5px 0
+      margin: 0 10px 5px 0
+      display: inline-block
       label
         display: inline
         float: none
@@ -111,6 +121,6 @@ input[type="submit"]
 
 .form-actions
   margin: 0
-  padding: 0
+  padding: 0 0 0 20%
   input
     @include action-btn

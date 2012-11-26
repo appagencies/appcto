@@ -14,10 +14,14 @@
   = f.fields_for :location do |l|
     = l.label :name, "Location"
     = l.text_field :name
+    %i
+      Where is the headquarter of your company located?
 
 .field
   = f.label :budget
   = f.select :budget, CompaniesHelper::BUDGETS.map {|budget| [budget[:string],budget[:id]]}
+  %i
+    The average fee you bill your average client.
 
 .field.radio.edit-platform
   = f.label :platform
@@ -28,6 +32,9 @@
         = label_tag "company_platform_#{value}" do
           %i
           = value.capitalize
+  %i
+    Check if your company develops apps for that platform.
+
 
 .field
   = f.label :description
@@ -46,6 +53,8 @@
 .field
   = f.label :email, "Contact Email"
   = f.email_field :email
+  %i
+    This is the email that will be used to send job inquiries.
 
 .form-actions
   = f.submit

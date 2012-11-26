@@ -11,4 +11,7 @@ en:
   mongoid:
     attributes:
       company:
-        name: "Name of the Company"
+        name: "Company Name"
+        budget: "Average Fee"
+        platform: "Platforms"
+        logo: "Upload Logo"

@@ -27,7 +27,7 @@
     = f.url_field :link, placeholder: "Link"
 
 .app-screenshots
-  %h3 Screenshots
+  %h3 Upload App Screenshots
   = f.fields_for :screenshots do |s|
     - if s.object.new_record?
       .screenshot.new

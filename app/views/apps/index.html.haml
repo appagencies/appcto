@@ -5,11 +5,6 @@
     .left-column
       .apps-nav
         %ul
-          %li.new
-            %a{href: "#newapp"}
-              %figure.app-icon
-                = image_tag "add-icon.png"
-              .app-name Add app
           - @apps.reverse_each do |app|
             %li
               %a{href: "##{app.id}"}
@@ -17,6 +12,11 @@
                   = image_tag app.icon_url if app.icon_url.present?
                   .mask
                 .app-name= app.name
+          %li.new
+            %a{href: "#newapp"}
+              %figure.app-icon
+                = image_tag "add-icon.png"
+              .app-name New App
 
     .app-show.new#newapp
       = nested_form_for [@app.company, @app] do |f|
@@ -26,4 +26,4 @@
       .app-show.edit{id: app.id}
         = nested_form_for [app.company, app], :remote => true do |f|
           = render 'form', :f => f
-        .app-delete= link_to "Delete App", [app.company, app], :data => { :confirm => "Are you sure?" }, :method => :delete
+        .app-delete= link_to "Delete this app", [app.company, app], :data => { :confirm => "Are you sure?" }, :method => :delete
