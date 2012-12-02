@@ -7,7 +7,7 @@ class App
   field :link
   field :platform
 
-  mount_uploader :icon, IconUploader
+  mount_uploader :icon, IconUploader, mount_on: :icon
 
   embedded_in :company
   embeds_many :screenshots, :cascade_callbacks => true

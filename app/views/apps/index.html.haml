@@ -9,7 +9,7 @@
             %li
               %a{href: "##{app.id}"}
                 %figure.app-icon
-                  = image_tag app.icon_url if app.icon_url.present?
+                  = cl_image_tag app.icon_url if app.icon_url.present?
                   .mask
                 .app-name= app.name
           %li.new

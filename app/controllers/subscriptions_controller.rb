@@ -9,6 +9,7 @@ class SubscriptionsController < ApplicationController
       @subscription = Subscription.find_by(paypal_customer_token: params[:payer_id])
       @subscription.destroy
     end
+
     render :nothing => true
   end
 

@@ -13,7 +13,7 @@ class PaypalPayment
 
   def make_recurring
     process :request_payment
-    process :create_recurring_profile, period: :monthly, frequency: 1, start_at: Time.zone.now, outstanding: :next_billing
+    process :create_recurring_profile, period: :monthly, frequency: 1, start_at: Time.zone.now+1.days, outstanding: :next_billing
   end
 
   def cancel

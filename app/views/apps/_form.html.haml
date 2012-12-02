@@ -9,7 +9,7 @@
   .field.app-icon
     = f.label :icon
     %figure.app-icon
-      = image_tag @app.icon_url if @app.icon_url.present?
+      = cl_image_tag @app.icon_url if @app.icon_url.present?
       .mask
     = f.file_field :icon
     = f.hidden_field :icon_cache

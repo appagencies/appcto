@@ -19,7 +19,7 @@ class Company
 
   index({ 'location.coordinates' => '2d' },{ background: true, sparse: true })
 
-	mount_uploader :logo, LogoUploader
+	mount_uploader :logo, LogoUploader, mount_on: :logo
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
