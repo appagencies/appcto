@@ -50,6 +50,14 @@ Appcto::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.mandrillapp.com',
+    :port           => 587,
+    :authentication => :login,
+    :user_name      => 'contact@appagencies.com',
+    :password       => '8a777a37-5a24-4682-8267-e350beb2f4f8'
+  }
 
   # Enable threaded mode
   # config.threadsafe!
