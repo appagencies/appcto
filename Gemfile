@@ -26,6 +26,7 @@ group :development, :test do
   gem 'hirb'
   gem 'faker'
   gem 'brakeman'
+  gem "letter_opener"
 end
 
 # Gems used only for assets and not required

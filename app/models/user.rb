@@ -56,4 +56,8 @@ class User
     "http://" + self.split("@").last
   end
 
+  def is_pro?
+    self.pro == true
+  end
+
 end

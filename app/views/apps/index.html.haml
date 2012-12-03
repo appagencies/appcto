@@ -12,11 +12,22 @@
                   = cl_image_tag app.icon_url if app.icon_url.present?
                   .mask
                 .app-name= app.name
-          %li.new
-            %a{href: "#newapp"}
-              %figure.app-icon
-                = image_tag "add-icon.png"
-              .app-name New App
+          - if current_user.is_pro? && @apps.count < 4
+            %li.new
+              %a{href: "#newapp"}
+                %figure.app-icon
+                  = image_tag "add-icon.png"
+                .app-name New App
+          - elsif @apps.count < 1
+            %li.new
+              %a{href: "#newapp"}
+                %figure.app-icon
+                  = image_tag "add-icon.png"
+                .app-name New App
+          - else
+            %li.new
+              = link_to "Want more apps? Upgrade now!", new_subscription_path
+
 
     .app-show.new#newapp
       = nested_form_for [@app.company, @app] do |f|

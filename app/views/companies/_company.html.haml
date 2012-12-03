@@ -10,14 +10,14 @@
             %li
               = link_to "##{app.id}", "data-toggle" => "tab" do
                 %figure.app-icon
-                  = image_tag app.icon_url if app.icon_url.present?
+                  = cl_image_tag app.icon_url if app.icon_url.present?
                   .mask
         - else
-          - company.apps.cover.first do |app|
+          - company.apps.limit(1).each do |app|
             %li
               = link_to "##{app.id}", "data-toggle" => "tab" do
                 %figure.app-icon
-                  = image_tag app.icon_url if app.icon_url.present?
+                  = cl_image_tag app.icon_url if app.icon_url.present?
                   .mask
 
       .apps-content
