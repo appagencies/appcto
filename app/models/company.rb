@@ -59,6 +59,7 @@ class Company
 
   def self.filter(params)
     companies = all
+    companies = companies.where(approved: true)
     companies = companies.by_budget(params[:budget]) if params[:budget].present?
     companies = companies.by_platform(params[:platform]) if params[:platform].present?
     companies = companies.by_location(params[:location]) if params[:location].present?
