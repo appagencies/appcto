@@ -34,8 +34,6 @@ class Company
 
   accepts_nested_attributes_for :location, :apps
 
-  #default_scope where(approved: true)
-
   scope :by_budget,   ->(budget){ where(budget: budget) }
   scope :by_platform, ->(platform){ any_in(platform: platform) }
   scope :by_location, ->(location){ near('location.coordinates' => Geocoder.coordinates(location)) }
