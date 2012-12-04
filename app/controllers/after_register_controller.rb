@@ -30,9 +30,13 @@ class AfterRegisterController < ApplicationController
     @user = current_user
     case step
     when :add_company
-      @company = @user.create_company(params[:company])
+      @company = @user.company
+      if @company.nil?
+        @company = @user.create_company(params[:company])
+      else
+        @company.update_attributes(params[:company])
+      end
       render_wizard @company
-
     when :add_apps
       @app = @user.company.apps.create(params[:app])
       render_wizard @app

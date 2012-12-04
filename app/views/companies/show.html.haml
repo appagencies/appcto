@@ -1,7 +1,7 @@
 .company-profile{:itemscope => true, :itemtype => "http://schema.org/Organization"}
   %header
     .inner
-      - unless !@company.is_approved?
+      - unless @company.is_approved?
         .pending-review
           Your company isn't publicly visible yet while pending approval.
     .company-info
