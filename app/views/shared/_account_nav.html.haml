@@ -9,6 +9,6 @@
       - else
         %li{class: cp(settings_pro_path)}
           = link_to "Pro", settings_pro_path
-    - else
+    - elsif current_user.company?
       %li{class: cp(new_subscription_path)}
         = link_to "Upgrade!", new_subscription_path
