@@ -24,9 +24,8 @@
                 %figure.app-icon
                   = image_tag "add-icon.png"
                 .app-name New App
-          - else
-            %li.new
-              = link_to "Want more apps? Upgrade now!", new_subscription_path
+      - if !current_user.is_pro? && @apps.count > 0
+        .skip= link_to "Want more apps? Upgrade now!", new_subscription_path
 
 
     .app-show.new#newapp
