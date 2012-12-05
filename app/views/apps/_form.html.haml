@@ -9,7 +9,7 @@
   .field.app-icon
     = f.label :icon
     %figure.app-icon
-      = cl_image_tag @app.icon_url if @app.icon_url.present?
+      = cl_image_tag f.object.icon_url if f.object.icon_url.present?
       .mask
     = f.file_field :icon
     = f.hidden_field :icon_cache
@@ -37,7 +37,7 @@
       .screenshot
         = image_tag s.object.screenshot_url
         = s.link_to_remove "Remove", :title => "Remove Screenshot"
-  = f.link_to_add "Add screenshot", :screenshots
+  = f.link_to_add "Add screenshot", :screenshots if f.object.screenshots.count < 4
 
 .form-actions.appsubmit
   = f.submit
