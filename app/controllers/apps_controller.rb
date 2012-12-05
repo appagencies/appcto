@@ -59,7 +59,7 @@ class AppsController < ApplicationController
 
     respond_to do |format|
       if @app.update_attributes(params[:app])
-        format.html { redirect_to(company_apps_path(company), notice: 'Company was successfully updated.')}
+        format.html { redirect_to(company_apps_path(company), notice: 'App was successfully updated.')}
       else
         format.html { render action: "edit" }
       end

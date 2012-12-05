@@ -17,9 +17,9 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -32,6 +32,7 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   process :resize_to_fit => [193, 290]
+  process :tags => ['app_screenshot']
   process :convert => :jpg
   #
   # def scale(width, height)
@@ -48,6 +49,10 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   # def extension_white_list
     %w(jpg jpeg gif png)
   # end
+
+  def public_id
+    return model.id
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

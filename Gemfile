@@ -11,7 +11,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid', git: "git://github.com/jnicklas/carrierwave-mongoid.git", branch: "mongoid-3.0"
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'nested_form'

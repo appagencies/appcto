@@ -9,7 +9,7 @@
             %li
               %a{href: "##{app.id}"}
                 %figure.app-icon
-                  = cl_image_tag app.icon_url if app.icon_url.present?
+                  = cl_image_tag app.icon.url if app.icon_url.present?
                   .mask
                 .app-name= app.name
           - if current_user.is_pro? && @apps.count < 4
@@ -29,7 +29,7 @@
 
 
     .app-show.new#newapp
-      = nested_form_for [@app.company, @app] do |f|
+      = nested_form_for [@app.company, @app], :remote => true do |f|
         = render 'form', :f => f
 
     - @apps.each do |app|
