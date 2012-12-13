@@ -21,7 +21,7 @@ class AfterRegisterController < ApplicationController
       @apps = @company.apps
 
     when :successful
-      UserMailer.signup_confirmation(current_user).deliver
+      #UserMailer.signup_confirmation(current_user).deliver
     end
     render_wizard
   end
