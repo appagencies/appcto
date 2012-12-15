@@ -24,7 +24,11 @@
         - company.apps.cover.each do |app|
           .app{id: "#{app.id}"}
             .app-name= app.name
-            .app-description= simple_format h app.description
+            .app-description
+              - if company.size > 0
+                = simple_format h app.description
+              - else
+                = simple_format h truncate("#{app.description}", :length => 75)
             .app-screenshots
               %a.nav.prev
               %a.nav.next
