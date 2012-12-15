@@ -29,9 +29,10 @@
                 = simple_format h app.description
               - else
                 = simple_format h truncate("#{app.description}", :length => 75)
-            .app-screenshots
-              %a.nav.prev
-              %a.nav.next
-              .app-screenshots-inner
-                - app.screenshots.each do |s|
-                  = image_tag s.screenshot_url
+            - if company.size > 0
+              .app-screenshots
+                %a.nav.prev
+                %a.nav.next
+                .app-screenshots-inner
+                  - app.screenshots.each do |s|
+                    = image_tag s.screenshot_url
