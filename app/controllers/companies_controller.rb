@@ -3,6 +3,9 @@ class CompaniesController < ApplicationController
   def index
     @platform = params[:platform] ||= Array.new
 
+    params[:seed] ||= Random.new_seed
+    srand params[:seed].to_i
+
     @companies = Company.filter(params).shuffle.sort_by(&:size).reverse
     @companies = Kaminari.paginate_array(@companies).page(params[:page]).per(10)
 
