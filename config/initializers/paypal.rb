@@ -1,10 +1,9 @@
-
 if Rails.env.production?
   PayPal::Recurring.configure do |config|
     config.sandbox = false
-    config.username = "hello_api1.sebastianmortelmans.be"
-    config.password = "WZJNLRPT8F5J7CPA"
-    config.signature = "AdCV46iXcWu-yXmAIsU9J-V1QJzyAaPqO9spRQ6xQLZUPUhynhdEn6Hx"
+    config.username = ""
+    config.password = ""
+    config.signature = ""
   end
 else
   PayPal::Recurring.configure do |config|
