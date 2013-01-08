@@ -12,7 +12,6 @@ capybara-*.html
 /public/uploads/*
 /coverage/
 /spec/tmp/*
-/config/initializers/paypal.rb
 **.orig
 rerun.txt
 pickle-email-*.html
